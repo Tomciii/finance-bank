@@ -49,9 +49,9 @@ public class BankClient {
     BankingInterface bankingInterface = getRmiProxy();
 
     try{
-      assert bankingInterface != null;
-      System.out.println(bankingInterface.getInvestableVolume());
-      System.out.println(bankingInterface.login("test","test"));
+        assert bankingInterface != null;
+        System.out.println(bankingInterface.getInvestableVolume());
+        System.out.println(bankingInterface.login("test","test"));
     }catch(BankingInterfaceException be){
       log.error("BankingInterface threw Exception: "+be.getMessage());
     }catch(Exception e){
