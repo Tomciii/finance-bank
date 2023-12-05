@@ -73,5 +73,14 @@ public class Person implements Serializable{
         this.password = password;
     }
 
-
+    @Override
+    public String toString() {
+        return "Person{" +
+                "svnr=" + svnr +
+                ", name='" + name + '\'' +
+                ", givenname='" + givenname + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

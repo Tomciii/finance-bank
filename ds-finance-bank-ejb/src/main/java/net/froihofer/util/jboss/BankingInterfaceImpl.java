@@ -61,7 +61,7 @@ public class BankingInterfaceImpl implements BankingInterface {
 
     @Override
     public String searchStockByISIN(String isin) throws BankingInterfaceException {
-        return null;
+        return bank.getPerson(1102562345).toString();
     }
 
     @Override

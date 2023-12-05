@@ -4,7 +4,7 @@ import common.PersonDTO;
 
 public class PersonTranslator {
 
-    public Person toEntity(PersonDTO person) {
+    public Person toEntity(Person person) {
         if (person == null) return null;
         return new Person();
     }

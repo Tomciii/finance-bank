@@ -52,6 +52,7 @@ public class BankClient {
         assert bankingInterface != null;
         System.out.println(bankingInterface.getInvestableVolume());
         System.out.println(bankingInterface.login("test","test"));
+        //System.out.println(bankingInterface.searchStockByISIN("lol"));
     }catch(BankingInterfaceException be){
       log.error("BankingInterface threw Exception: "+be.getMessage());
     }catch(Exception e){
