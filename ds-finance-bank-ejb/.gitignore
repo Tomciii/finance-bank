@@ -1,5 +1,6 @@
 #Maven output
 target/
+target/**
 pom.xml.versionsBackup
 pom.xml.releaseBackup
 
