@@ -86,14 +86,25 @@ public class BankingInterfaceImpl implements BankingInterface {
     }
 
     @Override
+    public void createPerson(String name, String givenname, String address, int svnr, String username, String password) {
+
+    }
+
+    @Override
+    public void createCustomer(int svnr) {
+
+    }
+
+    @Override
+    public void createEmployee(int snvt) {
+
+    }
+
+    @Override
     public String[] getDepot(String customerNr) throws BankingInterfaceException {
         return new String[0];
     }
 
-    @Override
-    public void createCustomer(String name, String givenname, String address, String customerNr, int svnr, String username, String password) {
-
-    }
 
     @Override
     public String searchCustomer(String name, String givenname, String customerNr) throws BankingInterfaceException {

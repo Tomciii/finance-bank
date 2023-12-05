@@ -22,7 +22,11 @@ public interface BankingInterface {
 
     public String[] getDepot(String customerNr) throws BankingInterfaceException;
 
-    public void createCustomer(String name, String givenname, String address, String customerNr, int svnr, String username, String password);
+    public void createPerson(String name, String givenname, String address, int svnr, String username, String password);
+
+    public void createCustomer(int svnr);
+
+    public void createEmployee(int snvt);
 
     public String searchCustomer(String name, String givenname, String customerNr)  throws BankingInterfaceException;
 
