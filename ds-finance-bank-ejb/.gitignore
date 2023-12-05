@@ -1,26 +1,27 @@
-#Maven output
-target/
-target/**
-pom.xml.versionsBackup
-pom.xml.releaseBackup
+/target/
+*/target/**
+**/META-INF/
+!.mvn/wrapper/maven-wrapper.jar
 
-#Merge files and temporary files
-*.orig
-*.orig.*
-*.chg.*
-*.rej
-*.conflict~
-
-#Netbeans files
-/nbproject/private/
-
-#Eclipse files
-.settings
-.project
+### STS ###
+.apt_generated
 .classpath
-.metadata
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
 
-#IntelliJ
-# Default ignored files
+### IntelliJ IDEA ###
 .idea
+*.iws
 *.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/build/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
