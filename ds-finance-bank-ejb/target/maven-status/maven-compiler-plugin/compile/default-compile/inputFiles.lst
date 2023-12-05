@@ -1,21 +1,31 @@
-E:\Studium\5th Semester\VS\New folder\ds-finance-bank_csdc24bb_03\ds-finance-bank-ejb\target\generated-sources\wsimport\net\froihofer\dsfinance\ws\trading\TradingWSException_Exception.java
-E:\Studium\5th Semester\VS\New folder\ds-finance-bank_csdc24bb_03\ds-finance-bank-ejb\target\generated-sources\wsimport\net\froihofer\dsfinance\ws\trading\Buy.java
-E:\Studium\5th Semester\VS\New folder\ds-finance-bank_csdc24bb_03\ds-finance-bank-ejb\src\main\java\net\froihofer\util\jboss\WildflyAuthDBHelper.java
-E:\Studium\5th Semester\VS\New folder\ds-finance-bank_csdc24bb_03\ds-finance-bank-ejb\target\generated-sources\wsimport\net\froihofer\dsfinance\ws\trading\FindStockQuotesByCompanyNameResponse.java
-E:\Studium\5th Semester\VS\New folder\ds-finance-bank_csdc24bb_03\ds-finance-bank-ejb\target\generated-sources\wsimport\net\froihofer\dsfinance\ws\trading\ObjectFactory.java
-E:\Studium\5th Semester\VS\New folder\ds-finance-bank_csdc24bb_03\ds-finance-bank-ejb\target\generated-sources\wsimport\net\froihofer\dsfinance\ws\trading\package-info.java
-E:\Studium\5th Semester\VS\New folder\ds-finance-bank_csdc24bb_03\ds-finance-bank-ejb\target\generated-sources\wsimport\net\froihofer\dsfinance\ws\trading\SellResponse.java
-E:\Studium\5th Semester\VS\New folder\ds-finance-bank_csdc24bb_03\ds-finance-bank-ejb\target\generated-sources\wsimport\net\froihofer\dsfinance\ws\trading\TradingWebService.java
-E:\Studium\5th Semester\VS\New folder\ds-finance-bank_csdc24bb_03\ds-finance-bank-ejb\src\main\java\net\froihofer\util\jboss\ResponseParser.java
-E:\Studium\5th Semester\VS\New folder\ds-finance-bank_csdc24bb_03\ds-finance-bank-ejb\target\generated-sources\wsimport\net\froihofer\dsfinance\ws\trading\BuyResponse.java
-E:\Studium\5th Semester\VS\New folder\ds-finance-bank_csdc24bb_03\ds-finance-bank-ejb\src\main\java\net\froihofer\util\jboss\HttpAuthentication.java
-E:\Studium\5th Semester\VS\New folder\ds-finance-bank_csdc24bb_03\ds-finance-bank-ejb\target\generated-sources\wsimport\net\froihofer\dsfinance\ws\trading\TradingWSException.java
-E:\Studium\5th Semester\VS\New folder\ds-finance-bank_csdc24bb_03\ds-finance-bank-ejb\target\generated-sources\wsimport\net\froihofer\dsfinance\ws\trading\GetStockQuoteHistoryResponse.java
-E:\Studium\5th Semester\VS\New folder\ds-finance-bank_csdc24bb_03\ds-finance-bank-ejb\src\main\java\net\froihofer\util\jboss\SoapClient.java
-E:\Studium\5th Semester\VS\New folder\ds-finance-bank_csdc24bb_03\ds-finance-bank-ejb\target\generated-sources\wsimport\net\froihofer\dsfinance\ws\trading\GetStockQuoteHistory.java
-E:\Studium\5th Semester\VS\New folder\ds-finance-bank_csdc24bb_03\ds-finance-bank-ejb\target\generated-sources\wsimport\net\froihofer\dsfinance\ws\trading\PublicStockQuote.java
-E:\Studium\5th Semester\VS\New folder\ds-finance-bank_csdc24bb_03\ds-finance-bank-ejb\target\generated-sources\wsimport\net\froihofer\dsfinance\ws\trading\GetStockQuotes.java
-E:\Studium\5th Semester\VS\New folder\ds-finance-bank_csdc24bb_03\ds-finance-bank-ejb\target\generated-sources\wsimport\net\froihofer\dsfinance\ws\trading\FindStockQuotesByCompanyName.java
-E:\Studium\5th Semester\VS\New folder\ds-finance-bank_csdc24bb_03\ds-finance-bank-ejb\target\generated-sources\wsimport\net\froihofer\dsfinance\ws\trading\TradingWebServiceService.java
-E:\Studium\5th Semester\VS\New folder\ds-finance-bank_csdc24bb_03\ds-finance-bank-ejb\target\generated-sources\wsimport\net\froihofer\dsfinance\ws\trading\GetStockQuotesResponse.java
-E:\Studium\5th Semester\VS\New folder\ds-finance-bank_csdc24bb_03\ds-finance-bank-ejb\target\generated-sources\wsimport\net\froihofer\dsfinance\ws\trading\Sell.java
+/Users/lannersantoine/OneDrive/Dokumente/Computer Science/Semester 5/Verteilte Systeme/Projekt/ds-finance-bank/ds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/trading/GetStockQuotesResponse.java
+/Users/lannersantoine/OneDrive/Dokumente/Computer Science/Semester 5/Verteilte Systeme/Projekt/ds-finance-bank/ds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/trading/FindStockQuotesByCompanyName.java
+/Users/lannersantoine/OneDrive/Dokumente/Computer Science/Semester 5/Verteilte Systeme/Projekt/ds-finance-bank/ds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/trading/Buy.java
+/Users/lannersantoine/OneDrive/Dokumente/Computer Science/Semester 5/Verteilte Systeme/Projekt/ds-finance-bank/ds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/soapclient/SoapClientProperties.java
+/Users/lannersantoine/OneDrive/Dokumente/Computer Science/Semester 5/Verteilte Systeme/Projekt/ds-finance-bank/ds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/entity/Employee.java
+/Users/lannersantoine/OneDrive/Dokumente/Computer Science/Semester 5/Verteilte Systeme/Projekt/ds-finance-bank/ds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/entity/PersonDAO.java
+/Users/lannersantoine/OneDrive/Dokumente/Computer Science/Semester 5/Verteilte Systeme/Projekt/ds-finance-bank/ds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/trading/GetStockQuotes.java
+/Users/lannersantoine/OneDrive/Dokumente/Computer Science/Semester 5/Verteilte Systeme/Projekt/ds-finance-bank/ds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/trading/package-info.java
+/Users/lannersantoine/OneDrive/Dokumente/Computer Science/Semester 5/Verteilte Systeme/Projekt/ds-finance-bank/ds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/entity/PersonTranslator.java
+/Users/lannersantoine/OneDrive/Dokumente/Computer Science/Semester 5/Verteilte Systeme/Projekt/ds-finance-bank/ds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/Bank.java
+/Users/lannersantoine/OneDrive/Dokumente/Computer Science/Semester 5/Verteilte Systeme/Projekt/ds-finance-bank/ds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/trading/GetStockQuoteHistoryResponse.java
+/Users/lannersantoine/OneDrive/Dokumente/Computer Science/Semester 5/Verteilte Systeme/Projekt/ds-finance-bank/ds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/WildflyAuthDBHelper.java
+/Users/lannersantoine/OneDrive/Dokumente/Computer Science/Semester 5/Verteilte Systeme/Projekt/ds-finance-bank/ds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/soapclient/SoapRequestBuilder.java
+/Users/lannersantoine/OneDrive/Dokumente/Computer Science/Semester 5/Verteilte Systeme/Projekt/ds-finance-bank/ds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/entity/Customer.java
+/Users/lannersantoine/OneDrive/Dokumente/Computer Science/Semester 5/Verteilte Systeme/Projekt/ds-finance-bank/ds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/soapclient/SoapClient.java
+/Users/lannersantoine/OneDrive/Dokumente/Computer Science/Semester 5/Verteilte Systeme/Projekt/ds-finance-bank/ds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/trading/FindStockQuotesByCompanyNameResponse.java
+/Users/lannersantoine/OneDrive/Dokumente/Computer Science/Semester 5/Verteilte Systeme/Projekt/ds-finance-bank/ds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/trading/PublicStockQuote.java
+/Users/lannersantoine/OneDrive/Dokumente/Computer Science/Semester 5/Verteilte Systeme/Projekt/ds-finance-bank/ds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/soapclient/SoapRequests.java
+/Users/lannersantoine/OneDrive/Dokumente/Computer Science/Semester 5/Verteilte Systeme/Projekt/ds-finance-bank/ds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/trading/Sell.java
+/Users/lannersantoine/OneDrive/Dokumente/Computer Science/Semester 5/Verteilte Systeme/Projekt/ds-finance-bank/ds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/soapclient/SoapResponseUnmarshaller.java
+/Users/lannersantoine/OneDrive/Dokumente/Computer Science/Semester 5/Verteilte Systeme/Projekt/ds-finance-bank/ds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/trading/TradingWebService.java
+/Users/lannersantoine/OneDrive/Dokumente/Computer Science/Semester 5/Verteilte Systeme/Projekt/ds-finance-bank/ds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/entity/Depot.java
+/Users/lannersantoine/OneDrive/Dokumente/Computer Science/Semester 5/Verteilte Systeme/Projekt/ds-finance-bank/ds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/trading/TradingWSException.java
+/Users/lannersantoine/OneDrive/Dokumente/Computer Science/Semester 5/Verteilte Systeme/Projekt/ds-finance-bank/ds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/trading/BuyResponse.java
+/Users/lannersantoine/OneDrive/Dokumente/Computer Science/Semester 5/Verteilte Systeme/Projekt/ds-finance-bank/ds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/trading/ObjectFactory.java
+/Users/lannersantoine/OneDrive/Dokumente/Computer Science/Semester 5/Verteilte Systeme/Projekt/ds-finance-bank/ds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/trading/TradingWSException_Exception.java
+/Users/lannersantoine/OneDrive/Dokumente/Computer Science/Semester 5/Verteilte Systeme/Projekt/ds-finance-bank/ds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/trading/GetStockQuoteHistory.java
+/Users/lannersantoine/OneDrive/Dokumente/Computer Science/Semester 5/Verteilte Systeme/Projekt/ds-finance-bank/ds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/trading/TradingWebServiceService.java
+/Users/lannersantoine/OneDrive/Dokumente/Computer Science/Semester 5/Verteilte Systeme/Projekt/ds-finance-bank/ds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/trading/SellResponse.java
+/Users/lannersantoine/OneDrive/Dokumente/Computer Science/Semester 5/Verteilte Systeme/Projekt/ds-finance-bank/ds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/BankingInterfaceImpl.java
+/Users/lannersantoine/OneDrive/Dokumente/Computer Science/Semester 5/Verteilte Systeme/Projekt/ds-finance-bank/ds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/entity/Person.java

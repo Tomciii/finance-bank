@@ -24,7 +24,7 @@
       <artifactId>ds-finance-bank-common</artifactId>
       <version>${project.version}</version>
     </dependency>
-
+    
     <!-- External dependencies -->
     <dependency>
       <groupId>org.slf4j</groupId>
