@@ -96,7 +96,7 @@ public class BankingInterfaceImpl implements BankingInterface {
     }
 
     @Override
-    public void createEmployee(int snvt) {
+    public void createEmployee(int svnr) {
 
     }
 
