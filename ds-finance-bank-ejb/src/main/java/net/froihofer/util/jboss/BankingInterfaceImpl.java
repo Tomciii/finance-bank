@@ -1,8 +1,14 @@
 package net.froihofer.util.jboss;
 
+import javax.annotation.Resource;
 import javax.annotation.security.PermitAll;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+
+
+import javax.ejb.SessionContext;
+import java.security.Principal;
+
 
 import common.BankingInterface;
 import common.BankingInterfaceException;
@@ -22,6 +28,9 @@ public class BankingInterfaceImpl implements BankingInterface {
     PersonDAO personDAO;
     @Inject
     PersonTranslator personTranslator;
+
+    @Resource
+    private SessionContext sessionContext;
 
     private final Bank bank = new Bank();
 
@@ -66,6 +75,7 @@ public class BankingInterfaceImpl implements BankingInterface {
 
     @Override
     public String searchStockByName(String name) throws BankingInterfaceException {
+
         try {
             return bank.getFindStockQuotesByCompanyNameResponse(name).toString();
         } catch (JAXBException e) {
@@ -113,6 +123,18 @@ public class BankingInterfaceImpl implements BankingInterface {
 
     @Override
     public String getInvestableVolume() throws BankingInterfaceException {
+        Principal principal = sessionContext.getCallerPrincipal();
+        String username = principal.getName();
+        System.out.println("Logged-in User: " + username);
+        // Check if the user is in a specific role
+        if (sessionContext.isCallerInRole("customer")) {
+            System.out.println("User is in yourRole");
+        } else {
+            System.out.println("User is not in yourRole");
+        }
+
+
+
         try {
             return bank.getFindStockQuotesByCompanyNameResponse("Apple").toString();
         } catch (JAXBException e) {
