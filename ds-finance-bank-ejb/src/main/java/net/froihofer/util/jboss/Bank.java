@@ -33,17 +33,14 @@ public class Bank {
         SoapClientProperties.username = name;
         SoapClientProperties.password = password;
         System.out.println("Yo");
+        personDAO = new PersonDAO();
     }
 
     public FindStockQuotesByCompanyNameResponse getFindStockQuotesByCompanyNameResponse(String name) throws JAXBException, IOException {
         Person person = new Person(1102562345, "Blinker", "Peter", "blinker", "peter");
         System.out.println("Succes 1");
-        try {
-            storePerson(person);
-            System.out.println("Succes 2");
-        } catch (BankingInterfaceException e) {
-            throw new RuntimeException(e);
-        }
+        personDAO.persist(person);
+        System.out.println("Succes 2");
         return SoapClient.findStockQuotesByCompanyName(name);
     }
 
@@ -54,13 +51,13 @@ public class Bank {
         }
         try {
             System.out.println("Print2");
-            Person p = personDAO.findById(person.getSvnr());
+            personDAO.findById(person.getSvnr());
             System.out.println("Print3");
 
         }
         catch (Exception e) {
             System.out.println("Print4");
-            personDAO.persist(personTranslator.toEntity(person));
+            personDAO.persist(person);
             System.out.println("Print5");
             //log.error("Problem while storing variable: "+e.getMessage(), e);
             //Do not include the root cause as classes in the stack trace might not be available on the client

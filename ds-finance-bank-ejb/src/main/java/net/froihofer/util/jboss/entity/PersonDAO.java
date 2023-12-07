@@ -1,11 +1,21 @@
 package net.froihofer.util.jboss.entity;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 
 public class PersonDAO {
 
-    @PersistenceContext private EntityManager entityManager;
+    @PersistenceContext(unitName = "ds-finance-bank-persunit")
+
+    private EntityManager entityManager;
+
+
+    public PersonDAO() {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ds-finance-bank-persunit");
+        entityManager = emf.createEntityManager();
+    }
 
     public Person findById(int svnr) {
         return entityManager.find(Person.class, svnr);
