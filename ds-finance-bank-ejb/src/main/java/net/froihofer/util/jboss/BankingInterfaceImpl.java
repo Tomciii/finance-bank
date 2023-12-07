@@ -59,13 +59,33 @@ public class BankingInterfaceImpl implements BankingInterface {
     }
 
     @Override
-    public boolean isEmployee(String username, String password) throws BankingInterfaceException {
-        return false;
+    public boolean isEmployee() throws BankingInterfaceException {
+        Principal principal = sessionContext.getCallerPrincipal();
+        String username = principal.getName();
+        System.out.println("Logged-in User: " + username);
+        // Check if the user is in a specific role
+        if (sessionContext.isCallerInRole("employee")) {
+            System.out.println("User is Employee Role");
+            return true;
+        } else {
+            System.out.println("User is not in Customer Role");
+            return false;
+        }
     }
 
     @Override
-    public boolean isCustomer(String username, String password) throws BankingInterfaceException {
-        return false;
+    public boolean isCustomer() throws BankingInterfaceException {
+        Principal principal = sessionContext.getCallerPrincipal();
+        String username = principal.getName();
+        System.out.println("Logged-in User: " + username);
+        // Check if the user is in a specific role
+        if (sessionContext.isCallerInRole("customer")) {
+            System.out.println("User is Customer Role");
+            return true;
+        } else {
+            System.out.println("User is not in Customer Role");
+            return false;
+        }
     }
 
     @Override
@@ -123,18 +143,6 @@ public class BankingInterfaceImpl implements BankingInterface {
 
     @Override
     public String getInvestableVolume() throws BankingInterfaceException {
-        Principal principal = sessionContext.getCallerPrincipal();
-        String username = principal.getName();
-        System.out.println("Logged-in User: " + username);
-        // Check if the user is in a specific role
-        if (sessionContext.isCallerInRole("customer")) {
-            System.out.println("User is in yourRole");
-        } else {
-            System.out.println("User is not in yourRole");
-        }
-
-
-
         try {
             return bank.getFindStockQuotesByCompanyNameResponse("Apple").toString();
         } catch (JAXBException e) {

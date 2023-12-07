@@ -8,9 +8,9 @@ public interface BankingInterface {
     /** Returns a boolean value, if a Member for given username and password is a member. */
     public boolean login(String username, String password) throws BankingInterfaceException;
 
-    public boolean isEmployee(String username, String password) throws BankingInterfaceException;
+    public boolean isEmployee() throws BankingInterfaceException;
 
-    public boolean isCustomer(String username, String password) throws BankingInterfaceException;
+    public boolean isCustomer() throws BankingInterfaceException;
 
     public String searchStockByISIN(String isin) throws BankingInterfaceException;
 

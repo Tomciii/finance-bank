@@ -14,10 +14,12 @@ public class BankClient {
   private RmiProxyBuilder rmiProxyBuilder = new RmiProxyBuilder();
 
   private void run() {
-    BankingInterface bankingInterface = rmiProxyBuilder.getRmiProxy("customer", "customerpass");
+    BankingInterface bankingInterface = rmiProxyBuilder.getRmiProxy("employee", "employeepass");
 
     try{
-        bankingInterface.createPerson("Vorname", "Nachname", "Teststraße", 1123984637, "username", "password");
+        bankingInterface.getInvestableVolume();
+        System.out.println(bankingInterface.isCustomer());
+        System.out.println(bankingInterface.isEmployee());
 
     }catch (NullPointerException e) {
       log.error(e.getMessage());

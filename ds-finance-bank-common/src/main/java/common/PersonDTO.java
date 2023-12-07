@@ -11,6 +11,8 @@ public class PersonDTO implements Serializable {
     private String username;
     private String password;
 
+    private String addresse;
+
     public PersonDTO() {
     }
 
