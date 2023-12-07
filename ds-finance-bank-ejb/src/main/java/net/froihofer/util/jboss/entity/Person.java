@@ -23,14 +23,18 @@ public class Person implements Serializable{
     @Column(name="password")
     private String password;
 
+    @Column(name="address")
+    private String address;
+
     public Person() {}
 
-    public Person(int svnr, String name, String givenname, String username, String password) {
+    public Person(int svnr, String name, String givenname, String address, String username, String password) {
         this.svnr = svnr;
         this.name = name;
         this.givenname = givenname;
         this.username = username;
         this.password = password;
+        this.address = address;
     }
 
     public int getSvnr() {

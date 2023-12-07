@@ -4,6 +4,7 @@ import common.BankingInterface;
 import common.BankingInterfaceException;
 
 import java.util.Properties;
+import java.util.Scanner;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -45,6 +46,10 @@ public class BankClient {
     return null;
   }
 
+
+
+
+
   private void run() {
     BankingInterface bankingInterface = getRmiProxy();
 
@@ -52,6 +57,10 @@ public class BankClient {
         assert bankingInterface != null;
         System.out.println(bankingInterface.getInvestableVolume());
         System.out.println(bankingInterface.login("test","test"));
+
+        bankingInterface.createPerson("Vorname", "Nachname", "Teststraße", 1123984637, "username", "password");
+
+
         //System.out.println(bankingInterface.searchStockByISIN("lol"));
     }catch(BankingInterfaceException be){
       log.error("BankingInterface threw Exception: "+be.getMessage());
@@ -60,6 +69,9 @@ public class BankClient {
     }
 
   }
+
+
+
 
   public static void main(String[] args) {
     BankClient client = new BankClient();

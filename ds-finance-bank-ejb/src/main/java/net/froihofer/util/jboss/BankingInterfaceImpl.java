@@ -87,7 +87,7 @@ public class BankingInterfaceImpl implements BankingInterface {
 
     @Override
     public void createPerson(String name, String givenname, String address, int svnr, String username, String password) {
-
+        bank.createPerson(name, givenname, address, svnr, username, password);
     }
 
     @Override

@@ -32,16 +32,30 @@ public class Bank {
         password = "oF0Queuhae";
         SoapClientProperties.username = name;
         SoapClientProperties.password = password;
-        System.out.println("Yo");
         personDAO = new PersonDAO();
     }
 
     public FindStockQuotesByCompanyNameResponse getFindStockQuotesByCompanyNameResponse(String name) throws JAXBException, IOException {
-        Person person = new Person(1102562345, "Blinker", "Peter", "blinker", "peter");
-        System.out.println("Succes 1");
-        personDAO.persist(person);
-        System.out.println("Succes 2");
         return SoapClient.findStockQuotesByCompanyName(name);
+    }
+
+
+    public boolean createPerson(String name, String givenname, String address, int svnr, String username, String password){
+        Person person = new Person(svnr, name, givenname, address,username, password);
+        if(personDAO.findById(person.getSvnr())==null){
+            try {
+                personDAO.persist(person);
+                return true;
+            }
+            catch (Exception e) {
+                //log.error("Problem while storing variable: "+e.getMessage(), e);
+                //Do not include the root cause as classes in the stack trace might not be available on the client
+                //and lead to ClassNotFoundExceptions when unmarshalling the server response.
+                //throw new BankingInterfaceException(e.getMessage());
+                return false;
+            }
+        }
+        return false;
     }
 
     public void storePerson(Person person) throws BankingInterfaceException {
