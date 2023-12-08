@@ -3,10 +3,6 @@ package net.froihofer.dsfinance.bank.client;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * Main class for starting the bank client.
- *
- */
 public class BankClient {
   private static Logger log = LoggerFactory.getLogger(BankClient.class);
   private BankClientConsole bankClientConsole = new BankClientConsole();

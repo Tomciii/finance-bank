@@ -14,6 +14,7 @@ class BankClientConsole {
         switch (input) {
             case "1": inputHandler.doFetchData(); break;
             case "2": inputHandler.doFetchData(); break;
+            case "EXIT": System.exit(1);
             default: break;
         }
         }
