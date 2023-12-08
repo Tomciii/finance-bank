@@ -9,7 +9,6 @@ public class BankClient {
   }
 
   private void run() {
-    System.out.println("Welcome to the Banking Client Application.");
     bankClientConsole.processInput();
   }
 }
