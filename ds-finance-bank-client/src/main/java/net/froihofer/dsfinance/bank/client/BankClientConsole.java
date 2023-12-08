@@ -6,7 +6,7 @@ class BankClientConsole {
     private Scanner scanner = new Scanner(System.in);
     private BankClientInputHandler inputHandler = new BankClientInputHandler();
 
-    public void processInput(){
+    void processInput(){
         while (true){
         this.displayActions();
         String input = scanner.nextLine();
@@ -21,7 +21,6 @@ class BankClientConsole {
     }
 
     private void displayActions(){
-        System.out.println("Possible Actions:");
         System.out.println("Enter '1' to find a stock based on a name");
         System.out.println("Enter '2' to find a stock based on a name");
         System.out.println("Enter '3' to find a stock based on a name");

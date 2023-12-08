@@ -17,6 +17,7 @@ public class RmiProxyBuilder {
 
      BankingInterface getRmiProxy(String username, String password) {
         try {
+            log.info("Attempting to connect to the Rmi Proxy ...");
             Properties props = getProperties(username, password);
             WildflyJndiLookupHelper jndiHelper = new WildflyJndiLookupHelper(new InitialContext(props), "ds-finance-bank-ear", "ds-finance-bank-ejb", "");
             return jndiHelper.lookup("BankingInterfaceService", BankingInterface.class);

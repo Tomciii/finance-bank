@@ -9,8 +9,7 @@ public class BankClient {
   }
 
   private void run() {
-    System.out.println("Welcome to the Banking Console Application.");
-    System.out.println("Choose your input:");
+    System.out.println("Welcome to the Banking Client Application.");
     bankClientConsole.processInput();
   }
 }

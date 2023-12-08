@@ -11,8 +11,6 @@ public class SoapClient {
     }
 
     public static FindStockQuotesByCompanyNameResponse findStockQuotesByCompanyName(String companyName) throws JAXBException, IOException {
-        System.out.println("Yoo, funktioniert 1B");
-        System.out.println(SoapRequests.findStockQuotesByCompanyName(companyName));
         return SoapRequests.findStockQuotesByCompanyName(companyName);
     }
 

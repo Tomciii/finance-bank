@@ -10,11 +10,12 @@ class BankClientInputHandler {
     private RmiProxyBuilder rmiProxyBuilder = new RmiProxyBuilder();
     BankingInterface bankingInterface = rmiProxyBuilder.getRmiProxy("customer", "customerpass");;
 
-    public void searchStockByName() {
+    void searchStockByName() {
         try {
-            System.out.println("Type in stock name: ");
+            System.out.print("Type in stock name: ");
             String input = scanner.nextLine();
-            bankingInterface.searchStockByName(input);
+            String result = bankingInterface.searchStockByName(input);
+            System.out.println(result);
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
