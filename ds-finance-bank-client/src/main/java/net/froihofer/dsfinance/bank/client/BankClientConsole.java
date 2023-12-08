@@ -12,11 +12,11 @@ class BankClientConsole {
         String input = scanner.nextLine();
 
         switch (input) {
-            case "1": inputHandler.doFetchData(); break;
-            case "2": inputHandler.doFetchData(); break;
+            case "1": inputHandler.searchStockByName(); break;
+            case "2": inputHandler.searchStockByName(); break;
             case "EXIT": System.exit(1);
             default: break;
-        }
+         }
         }
     }
 

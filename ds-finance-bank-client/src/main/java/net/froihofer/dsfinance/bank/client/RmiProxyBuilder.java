@@ -15,23 +15,16 @@ public class RmiProxyBuilder {
 
     private static Logger log = LoggerFactory.getLogger(RmiProxyBuilder.class);
 
-    /**
-     * Skeleton method for performing an RMI lookup
-     */
      BankingInterface getRmiProxy(String username, String password) {
-        Properties props = getProperties(username, password);
-
         try {
+            Properties props = getProperties(username, password);
             WildflyJndiLookupHelper jndiHelper = new WildflyJndiLookupHelper(new InitialContext(props), "ds-finance-bank-ear", "ds-finance-bank-ejb", "");
-            BankingInterface bankingInterface = jndiHelper.lookup("BankingInterfaceService", BankingInterface.class);
-
-            return bankingInterface;
-        }
-        catch (NamingException e) {
+            return jndiHelper.lookup("BankingInterfaceService", BankingInterface.class);
+        } catch (NamingException e) {
             log.error("Failed to initialize InitialContext.",e);
         }
 
-        return null;
+        throw new NullPointerException("Could not connect to Wild Fly Server.");
     }
 
     private Properties getProperties(String customer, String customerpass) {
