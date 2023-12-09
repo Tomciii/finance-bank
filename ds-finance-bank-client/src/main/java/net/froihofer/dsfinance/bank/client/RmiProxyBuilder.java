@@ -1,6 +1,6 @@
 package net.froihofer.dsfinance.bank.client;
 
-import common.BankingInterface;
+import common.bankingInterface.BankingInterface;
 import net.froihofer.util.AuthCallbackHandler;
 import net.froihofer.util.WildflyJndiLookupHelper;
 import org.slf4j.Logger;

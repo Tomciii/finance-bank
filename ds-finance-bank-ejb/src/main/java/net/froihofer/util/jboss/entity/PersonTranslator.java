@@ -1,6 +1,6 @@
 package net.froihofer.util.jboss.entity;
 
-import common.PersonDTO;
+import common.dto.PersonDTO;
 
 public class PersonTranslator {
 

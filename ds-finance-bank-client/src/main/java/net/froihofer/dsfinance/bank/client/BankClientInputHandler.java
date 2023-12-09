@@ -1,7 +1,7 @@
 package net.froihofer.dsfinance.bank.client;
 
-import common.BankingInterface;
-import common.BankingInterfaceException;
+import common.bankingInterface.BankingInterface;
+import common.bankingInterface.BankingInterfaceException;
 
 import java.util.Scanner;
 

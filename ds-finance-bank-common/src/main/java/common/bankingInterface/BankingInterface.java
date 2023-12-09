@@ -1,4 +1,4 @@
-package common;
+package common.bankingInterface;
 
 import javax.ejb.Remote;
 
@@ -34,7 +34,7 @@ public interface BankingInterface {
 
 
     /** Persistently stores the value of the given variable. */
-    //public void storeVariable(VariableDTO variable) throws common.BankingInterfaceException;
+    //public void storeVariable(VariableDTO variable) throws common.bankingInterface.BankingInterfaceException;
 
     /** Returns the value of a persisted variable. */
     public long getVariable(String name) throws BankingInterfaceException;

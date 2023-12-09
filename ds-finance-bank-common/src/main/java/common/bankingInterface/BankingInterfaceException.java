@@ -1,8 +1,8 @@
-package common;
+package common.bankingInterface;
 
 public class BankingInterfaceException extends java.lang.Exception {
     /**
-     * Creates a new instance of <code>common.BankingInterfaceException</code> without detail message.
+     * Creates a new instance of <code>common.bankingInterface.BankingInterfaceException</code> without detail message.
      */
     public BankingInterfaceException() {
     }

@@ -10,12 +10,11 @@ import javax.ejb.SessionContext;
 import java.security.Principal;
 
 
-import common.BankingInterface;
-import common.BankingInterfaceException;
+import common.bankingInterface.BankingInterface;
+import common.bankingInterface.BankingInterfaceException;
 import jakarta.xml.bind.JAXBException;
 import net.froihofer.util.jboss.entity.*;
-import net.froihofer.util.jboss.soapclient.*;
-import net.froihofer.util.jboss.trading.*;
+import net.froihofer.util.jboss.trading.FindStockQuotesByCompanyNameResponse;
 
 import java.io.IOException;
 
@@ -93,6 +92,8 @@ public class BankingInterfaceImpl implements BankingInterface {
         return bank.getPerson(1102562345).toString();
     }
 
+    // TODO - Return something like a StockDTO which is in the commons so that client can also access the dto (Like The "Translator" class)
+    // TODO - Catch a BankingInterfaceException here (And throw one inside the logic where needed)
     @Override
     public String searchStockByName(String name) throws BankingInterfaceException {
 

@@ -1,6 +1,5 @@
 package net.froihofer.util.jboss;
-import common.BankingInterfaceException;
-import common.PersonDTO;
+import common.bankingInterface.BankingInterfaceException;
 import jakarta.xml.bind.JAXBException;
 import net.froihofer.util.jboss.entity.Person;
 import net.froihofer.util.jboss.entity.PersonDAO;
@@ -8,20 +7,10 @@ import net.froihofer.util.jboss.entity.PersonTranslator;
 import net.froihofer.util.jboss.soapclient.SoapClient;
 import net.froihofer.util.jboss.soapclient.SoapClientProperties;
 import net.froihofer.util.jboss.trading.FindStockQuotesByCompanyNameResponse;
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 
 
 import javax.inject.Inject;
-import javax.xml.soap.*;
 import java.io.IOException;
-
-import javax.security.enterprise.SecurityContext;
-import java.security.Principal;
-import java.util.Arrays;
-import java.util.Set;
 
 
 public class Bank {
