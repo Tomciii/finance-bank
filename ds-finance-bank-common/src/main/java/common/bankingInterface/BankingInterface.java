@@ -5,6 +5,7 @@ import javax.ejb.Remote;
 @Remote
 public interface BankingInterface {
 
+    // TODO - Refactor to stateful bean so that we can remove login, isEmployee, isCustomer
     /** Returns a boolean value, if a Member for given username and password is a member. */
     public boolean login(String username, String password) throws BankingInterfaceException;
 
