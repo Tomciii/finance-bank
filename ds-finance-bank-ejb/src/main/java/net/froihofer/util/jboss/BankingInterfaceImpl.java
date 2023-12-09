@@ -91,7 +91,7 @@ public class BankingInterfaceImpl implements BankingInterface {
         return bank.getPerson(1102562345).toString();
     }
 
-    // TODO - Return something like a StockDTO which is in the commons so that client can also access the dto (Like The "Translator" class)
+    // TODO - Return something like a StockDTO which is in the commons so that client can also access the dto (Like The "PersonTranslator" class)
     // TODO - Catch a BankingInterfaceException here (And throw one inside the logic where needed)
     @Override
     public String searchStockByName(String name) throws BankingInterfaceException {
