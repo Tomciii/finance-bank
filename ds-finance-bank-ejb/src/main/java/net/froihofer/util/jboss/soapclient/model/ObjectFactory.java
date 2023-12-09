@@ -1,5 +1,5 @@
 
-package net.froihofer.util.jboss.trading;
+package net.froihofer.util.jboss.soapclient.model;
 
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlElementDecl;

@@ -14,6 +14,7 @@ public interface BankingInterface {
 
     public String searchStockByISIN(String isin) throws BankingInterfaceException;
 
+    // TODO - Return StockDTO instead of string
     public String searchStockByName(String name) throws BankingInterfaceException;
 
     public void buySockByISIN(String ISIN, double amount, String customerNr) throws BankingInterfaceException;

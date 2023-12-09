@@ -18,6 +18,7 @@ class BankClientConsole {
         this.displayActions();
         String input = scanner.nextLine();
 
+        // TODO - Implement rest of the inputhandler methods
         switch (input) {
             case "1": inputHandler.searchStockByName(); break;
             case "2": inputHandler.searchStockByName(); break;

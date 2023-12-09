@@ -1,5 +1,5 @@
 
-package net.froihofer.util.jboss.trading;
+package net.froihofer.util.jboss.soapclient.model;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -8,12 +8,12 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for buy complex type.
+ * <p>Java class for sell complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>{@code
- * <complexType name="buy">
+ * <complexType name="sell">
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
@@ -28,11 +28,11 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "buy", propOrder = {
+@XmlType(name = "sell", propOrder = {
     "symbol",
     "shares"
 })
-public class Buy {
+public class Sell {
 
     @XmlElement(required = true)
     protected String symbol;

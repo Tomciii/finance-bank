@@ -14,7 +14,6 @@ import common.bankingInterface.BankingInterface;
 import common.bankingInterface.BankingInterfaceException;
 import jakarta.xml.bind.JAXBException;
 import net.froihofer.util.jboss.entity.*;
-import net.froihofer.util.jboss.trading.FindStockQuotesByCompanyNameResponse;
 
 import java.io.IOException;
 

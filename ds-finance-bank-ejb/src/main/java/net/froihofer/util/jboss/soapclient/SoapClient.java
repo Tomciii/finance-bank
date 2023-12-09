@@ -1,7 +1,8 @@
 package net.froihofer.util.jboss.soapclient;
 
 import jakarta.xml.bind.JAXBException;
-import net.froihofer.util.jboss.trading.*;
+import net.froihofer.util.jboss.model.*;
+import net.froihofer.util.jboss.soapclient.model.*;
 
 import java.io.IOException;
 

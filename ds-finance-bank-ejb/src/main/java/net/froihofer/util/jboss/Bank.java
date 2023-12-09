@@ -6,7 +6,7 @@ import net.froihofer.util.jboss.entity.PersonDAO;
 import net.froihofer.util.jboss.entity.PersonTranslator;
 import net.froihofer.util.jboss.soapclient.SoapClient;
 import net.froihofer.util.jboss.soapclient.SoapClientProperties;
-import net.froihofer.util.jboss.trading.FindStockQuotesByCompanyNameResponse;
+import net.froihofer.util.jboss.soapclient.model.FindStockQuotesByCompanyNameResponse;
 
 
 import javax.inject.Inject;

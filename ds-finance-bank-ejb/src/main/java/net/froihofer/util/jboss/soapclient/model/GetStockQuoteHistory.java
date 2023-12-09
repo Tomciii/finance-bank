@@ -1,5 +1,5 @@
 
-package net.froihofer.util.jboss.trading;
+package net.froihofer.util.jboss.soapclient.model;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -8,16 +8,16 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for findStockQuotesByCompanyName complex type.
+ * <p>Java class for getStockQuoteHistory complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>{@code
- * <complexType name="findStockQuotesByCompanyName">
+ * <complexType name="getStockQuoteHistory">
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element name="partOfCompanyName" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         <element name="symbol" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -27,36 +27,36 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "findStockQuotesByCompanyName", propOrder = {
-    "partOfCompanyName"
+@XmlType(name = "getStockQuoteHistory", propOrder = {
+    "symbol"
 })
-public class FindStockQuotesByCompanyName {
+public class GetStockQuoteHistory {
 
     @XmlElement(required = true)
-    protected String partOfCompanyName;
+    protected String symbol;
 
     /**
-     * Gets the value of the partOfCompanyName property.
+     * Gets the value of the symbol property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getPartOfCompanyName() {
-        return partOfCompanyName;
+    public String getSymbol() {
+        return symbol;
     }
 
     /**
-     * Sets the value of the partOfCompanyName property.
+     * Sets the value of the symbol property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setPartOfCompanyName(String value) {
-        this.partOfCompanyName = value;
+    public void setSymbol(String value) {
+        this.symbol = value;
     }
 
 }

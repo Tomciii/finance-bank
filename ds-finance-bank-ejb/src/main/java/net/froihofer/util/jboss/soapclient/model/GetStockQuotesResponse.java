@@ -1,5 +1,5 @@
 
-package net.froihofer.util.jboss.trading;
+package net.froihofer.util.jboss.soapclient.model;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -11,12 +11,12 @@ import java.util.List;
 
 
 /**
- * <p>Java class for findStockQuotesByCompanyNameResponse complex type.
+ * <p>Java class for getStockQuotesResponse complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>{@code
- * <complexType name="findStockQuotesByCompanyNameResponse">
+ * <complexType name="getStockQuotesResponse">
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
@@ -30,10 +30,10 @@ import java.util.List;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "findStockQuotesByCompanyNameResponse", propOrder = {
+@XmlType(name = "getStockQuotesResponse", propOrder = {
     "_return"
 })
-public class FindStockQuotesByCompanyNameResponse {
+public class GetStockQuotesResponse {
 
     @XmlElement(name = "return")
     protected List<PublicStockQuote> _return;
@@ -69,10 +69,4 @@ public class FindStockQuotesByCompanyNameResponse {
         return this._return;
     }
 
-    @Override
-    public String toString() {
-        return "FindStockQuotesByCompanyNameResponse{" +
-                "_return=" + _return +
-                '}';
-    }
 }
