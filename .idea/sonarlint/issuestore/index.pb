@@ -22,16 +22,10 @@ Lds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/entity/Depot.java,b
 Ods-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/entity/Customer.java,9\1\91176dc07f32385ea375081f40de29254c7dd7ee
 K
 ds-finance-bank-ejb/pom.xml,5\0\5094f71e38faf2e4bcb527ebe25509effe843834
-ç
-]ds-finance-bank-client/src/main/java/net/froihofer/dsfinance/bank/client/RmiProxyBuilder.java,3\1\3132eefd475c728dfce709197b5c4cc91afd0d71
-t
-Dds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/Bank.java,d\2\d26ee31adcb502928a8c02f0e78df33e53363a4d
 Ñ
 Tds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/soapclient/model/Buy.java,4\3\43bbe581140bac5905e004c71c360074c65e25ab
 å
 \ds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/soapclient/model/BuyResponse.java,f\7\f7bbc466fe54578fa75f449616fc31a90d3173f5
-•
-uds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/soapclient/model/FindStockQuotesByCompanyNameResponse.java,5\c\5c3221c361d9db1041b50c55050e94692913fbe9
 ï
 eds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/soapclient/model/GetStockQuoteHistory.java,d\6\d602eecc17e0c9fde2143b6dd67cd1345dd8fbfc
 ù
@@ -50,8 +44,6 @@ ads-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/soapclient/model/Pub
 Uds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/soapclient/model/Sell.java,5\3\534688beda8f1d1d695a34a0d58c34c085c8b3a0
 ç
 ]ds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/soapclient/model/SellResponse.java,0\8\081b203da0f56ad11883eb617346806008d020a3
-Ö
-Uds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/soapclient/SoapClient.java,b\c\bc2b48918cf7ab9beda02fe51e5618b242ab73d1
 á
 Wds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/soapclient/SoapRequests.java,b\a\ba6178b20442299e2addd40a4acd05f849c8ee5b
 í

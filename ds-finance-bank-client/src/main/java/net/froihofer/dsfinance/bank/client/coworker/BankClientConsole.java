@@ -1,4 +1,4 @@
-package net.froihofer.dsfinance.bank.client;
+package net.froihofer.dsfinance.bank.client.coworker;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +11,7 @@ class BankClientConsole {
     private BankClientInputHandler inputHandler = new BankClientInputHandler();
 
     void processInput(){
-        System.out.println("Welcome to the Banking Client Application.");
+        System.out.println("Welcome to the Banking Client Application for coworkers.");
         boolean isProcessing = true;
 
         while (isProcessing){

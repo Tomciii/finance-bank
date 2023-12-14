@@ -1,4 +1,4 @@
-package net.froihofer.dsfinance.bank.client;
+package net.froihofer.dsfinance.bank.client.customer;
 
 public class BankClient {
   private BankClientConsole bankClientConsole = new BankClientConsole();

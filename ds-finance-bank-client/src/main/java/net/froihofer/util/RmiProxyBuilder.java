@@ -1,8 +1,6 @@
-package net.froihofer.dsfinance.bank.client;
+package net.froihofer.util;
 
 import common.bankingInterface.BankingInterface;
-import net.froihofer.util.AuthCallbackHandler;
-import net.froihofer.util.WildflyJndiLookupHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,7 +13,7 @@ public class RmiProxyBuilder {
 
     private static Logger log = LoggerFactory.getLogger(RmiProxyBuilder.class);
 
-     BankingInterface getRmiProxy(String username, String password) {
+    public BankingInterface getRmiProxy(String username, String password) {
         try {
             log.info("Attempting to connect to the Rmi Proxy ...");
             Properties props = getProperties(username, password);

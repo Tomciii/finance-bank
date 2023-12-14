@@ -1,7 +1,8 @@
-package net.froihofer.dsfinance.bank.client;
+package net.froihofer.dsfinance.bank.client.customer;
 
 import common.bankingInterface.BankingInterface;
 import common.bankingInterface.BankingInterfaceException;
+import net.froihofer.util.RmiProxyBuilder;
 
 import java.util.Scanner;
 
