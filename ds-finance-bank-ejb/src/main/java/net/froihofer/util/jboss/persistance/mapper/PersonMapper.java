@@ -1,7 +1,7 @@
-package net.froihofer.util.jboss.mapper;
+package net.froihofer.util.jboss.persistance.mapper;
 
 import common.dto.PersonDTO;
-import net.froihofer.util.jboss.entity.Person;
+import net.froihofer.util.jboss.persistance.entity.Person;
 
 public class PersonMapper {
 

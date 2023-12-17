@@ -13,8 +13,8 @@ import java.security.Principal;
 import common.bankingInterface.BankingInterface;
 import common.bankingInterface.BankingInterfaceException;
 import jakarta.xml.bind.JAXBException;
-import net.froihofer.util.jboss.dao.PersonDAO;
-import net.froihofer.util.jboss.mapper.PersonMapper;
+import net.froihofer.util.jboss.persistance.dao.PersonDAO;
+import net.froihofer.util.jboss.persistance.mapper.PersonMapper;
 
 import java.io.IOException;
 

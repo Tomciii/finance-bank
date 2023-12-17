@@ -1,9 +1,9 @@
 package net.froihofer.util.jboss;
 import common.bankingInterface.BankingInterfaceException;
 import jakarta.xml.bind.JAXBException;
-import net.froihofer.util.jboss.entity.Person;
-import net.froihofer.util.jboss.dao.PersonDAO;
-import net.froihofer.util.jboss.mapper.PersonMapper;
+import net.froihofer.util.jboss.persistance.entity.Person;
+import net.froihofer.util.jboss.persistance.dao.PersonDAO;
+import net.froihofer.util.jboss.persistance.mapper.PersonMapper;
 import net.froihofer.util.jboss.soapclient.SoapClient;
 import net.froihofer.util.jboss.soapclient.SoapClientProperties;
 import net.froihofer.util.jboss.soapclient.model.FindStockQuotesByCompanyNameResponse;
