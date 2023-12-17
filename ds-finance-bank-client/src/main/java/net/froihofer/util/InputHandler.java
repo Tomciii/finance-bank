@@ -8,7 +8,7 @@ public class InputHandler {
 
     public static String getStockName() {
         String stock = "";
-        while (!stock.isEmpty()){
+        while (stock.isEmpty()){
             System.out.print("Type in stock name> ");
             stock = scanner.nextLine();
         }
@@ -19,7 +19,7 @@ public class InputHandler {
 
     public static String getUserName() {
         String stock = "";
-        while (!stock.isEmpty()){
+        while (stock.isEmpty()){
             System.out.print("Type in user name> ");
             stock = scanner.nextLine();
         }
@@ -29,7 +29,7 @@ public class InputHandler {
 
     public static String getFirstName() {
         String stock = "";
-        while (!stock.isEmpty()){
+        while (stock.isEmpty()){
             System.out.print("Type in first name> ");
             stock = scanner.nextLine();
         }
@@ -40,7 +40,7 @@ public class InputHandler {
 
     public static String getLastName() {
         String stock = "";
-        while (!stock.isEmpty()){
+        while (stock.isEmpty()){
             System.out.print("Type in last name> ");
             stock = scanner.nextLine();
         }
@@ -50,7 +50,7 @@ public class InputHandler {
 
     public static String getAddress() {
         String stock = "";
-        while (!stock.isEmpty()){
+        while (stock.isEmpty()){
             System.out.print("Type in adress> ");
             stock = scanner.nextLine();
         }
@@ -60,7 +60,7 @@ public class InputHandler {
 
     public static String getCustomerNumber() {
         String stock = "";
-        while (!stock.isEmpty()){
+        while (stock.isEmpty()){
             System.out.print("Type in customer number> ");
             stock = scanner.nextLine();
         }
@@ -70,7 +70,7 @@ public class InputHandler {
 
     public static Double getAmount() {
         String stock = "";
-        while (!stock.isEmpty()){
+        while (stock.isEmpty()){
             try {
                 System.out.print("Type in amount> ");
                 stock = scanner.nextLine();
