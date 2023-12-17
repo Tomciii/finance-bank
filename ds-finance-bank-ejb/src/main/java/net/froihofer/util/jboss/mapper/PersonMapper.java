@@ -1,11 +1,12 @@
-package net.froihofer.util.jboss.entity;
+package net.froihofer.util.jboss.mapper;
 
 import common.dto.PersonDTO;
+import net.froihofer.util.jboss.entity.Person;
 
-public class PersonTranslator {
+public class PersonMapper {
 
     // TODO Properly "translate" to Person
-    public Person toEntity(Person person) {
+    public Person toEntity(PersonDTO person) {
         if (person == null) return null;
         return new Person();
     }

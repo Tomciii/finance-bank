@@ -2,8 +2,8 @@ package net.froihofer.util.jboss;
 import common.bankingInterface.BankingInterfaceException;
 import jakarta.xml.bind.JAXBException;
 import net.froihofer.util.jboss.entity.Person;
-import net.froihofer.util.jboss.entity.PersonDAO;
-import net.froihofer.util.jboss.entity.PersonTranslator;
+import net.froihofer.util.jboss.dao.PersonDAO;
+import net.froihofer.util.jboss.mapper.PersonMapper;
 import net.froihofer.util.jboss.soapclient.SoapClient;
 import net.froihofer.util.jboss.soapclient.SoapClientProperties;
 import net.froihofer.util.jboss.soapclient.model.FindStockQuotesByCompanyNameResponse;
@@ -13,7 +13,7 @@ import javax.inject.Inject;
 import java.io.IOException;
 
 
-public class Bank {
+public class BankService {
 
     public String name;
     private String password;
@@ -22,11 +22,9 @@ public class Bank {
     PersonDAO personDAO;
 
     @Inject
-    PersonTranslator personTranslator;
+    PersonMapper personMapper;
 
-
-
-    public Bank() {
+    public BankService() {
         name = "csdc24bb_03";
         password = "oF0Queuhae";
         SoapClientProperties.username = name;
@@ -37,8 +35,6 @@ public class Bank {
     public FindStockQuotesByCompanyNameResponse getFindStockQuotesByCompanyNameResponse(String name) throws JAXBException, IOException {
         return SoapClient.findStockQuotesByCompanyName(name);
     }
-
-
 
     public Person createPerson(String name, String givenname, String address, int svnr, String username, String password){
         Person person = new Person(svnr, name, givenname, address,username, password);

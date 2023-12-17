@@ -13,7 +13,8 @@ import java.security.Principal;
 import common.bankingInterface.BankingInterface;
 import common.bankingInterface.BankingInterfaceException;
 import jakarta.xml.bind.JAXBException;
-import net.froihofer.util.jboss.entity.*;
+import net.froihofer.util.jboss.dao.PersonDAO;
+import net.froihofer.util.jboss.mapper.PersonMapper;
 
 import java.io.IOException;
 
@@ -25,12 +26,12 @@ public class BankingInterfaceImpl implements BankingInterface {
     @Inject
     PersonDAO personDAO;
     @Inject
-    PersonTranslator personTranslator;
+    PersonMapper personTranslator;
 
     @Resource
     private SessionContext sessionContext;
 
-    private final Bank bank = new Bank();
+    private final BankService bank = new BankService();
 
     public boolean login(String username, String password) throws BankingInterfaceException {
         System.out.println("TestA");

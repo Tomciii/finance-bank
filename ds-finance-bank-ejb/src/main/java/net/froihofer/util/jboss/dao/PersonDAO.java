@@ -1,4 +1,6 @@
-package net.froihofer.util.jboss.entity;
+package net.froihofer.util.jboss.dao;
+
+import net.froihofer.util.jboss.entity.Person;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
