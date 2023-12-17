@@ -29,7 +29,7 @@ class BankClientInputHandler {
         try {
             String stock = InputHandler.getStockName();
             Double amount = InputHandler.getAmount();
-
+       //     bankingInterface.buySockByISIN();
         } catch (Exception e) {
 
         }
@@ -38,8 +38,10 @@ class BankClientInputHandler {
     public void sellStock() {
         String stock = InputHandler.getStockName();
         Double amount = InputHandler.getAmount();
+     //   bankingInterface.sellStockByISIN();
     }
 
     public void displayDepotInfo() {
+        // bankingInterface.getDepot();
     }
 }

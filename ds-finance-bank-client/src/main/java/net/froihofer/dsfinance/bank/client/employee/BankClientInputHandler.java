@@ -52,18 +52,24 @@ class BankClientInputHandler {
         String userName = InputHandler.getUserName();
         String stockName = InputHandler.getStockName();
         Double amount = InputHandler.getAmount();
+
+      //  bankingInterface.buySockByISIN();
     }
 
     public void sellStockForCustomer() {
         String userName = InputHandler.getUserName();
         String stockName = InputHandler.getStockName();
         Double amount = InputHandler.getAmount();
+
+       // bankingInterface.sellStockByISIN();
     }
 
     public void displayDepotInfoOfCustomer() {
         String userName = InputHandler.getUserName();
+       // bankingInterface.getDepot();
     }
 
     public void displayInvestableVolume() {
+     //   bankingInterface.getInvestableVolume();
     }
 }
