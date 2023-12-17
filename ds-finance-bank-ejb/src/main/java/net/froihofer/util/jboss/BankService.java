@@ -1,8 +1,14 @@
 package net.froihofer.util.jboss;
 import common.bankingInterface.BankingInterfaceException;
 import jakarta.xml.bind.JAXBException;
+import net.froihofer.util.jboss.persistance.dao.CustomerDAO;
+import net.froihofer.util.jboss.persistance.dao.DepotDAO;
+import net.froihofer.util.jboss.persistance.dao.EmployeeDAO;
 import net.froihofer.util.jboss.persistance.entity.Person;
 import net.froihofer.util.jboss.persistance.dao.PersonDAO;
+import net.froihofer.util.jboss.persistance.mapper.CustomerMapper;
+import net.froihofer.util.jboss.persistance.mapper.DepotMapper;
+import net.froihofer.util.jboss.persistance.mapper.EmployeeMapper;
 import net.froihofer.util.jboss.persistance.mapper.PersonMapper;
 import net.froihofer.util.jboss.soapclient.SoapClient;
 import net.froihofer.util.jboss.soapclient.SoapClientProperties;
@@ -19,7 +25,25 @@ public class BankService {
     PersonDAO personDAO;
 
     @Inject
+    CustomerDAO customerDAO;
+
+    @Inject
+    EmployeeDAO employeeDAO;
+
+    @Inject
+    DepotDAO depotDAO;
+
+    @Inject
     PersonMapper personMapper;
+
+    @Inject
+    CustomerMapper customerMapper;
+
+    @Inject
+    EmployeeMapper employeeMapper;
+
+    @Inject
+    DepotMapper depotMapper;
 
     public BankService() {
         SoapClientProperties.username = "csdc24bb_03";
