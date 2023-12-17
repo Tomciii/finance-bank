@@ -1,4 +1,4 @@
-package net.froihofer.dsfinance.bank.client.coworker;
+package net.froihofer.dsfinance.bank.client.employee;
 
 import common.bankingInterface.BankingInterface;
 import common.bankingInterface.BankingInterfaceException;
