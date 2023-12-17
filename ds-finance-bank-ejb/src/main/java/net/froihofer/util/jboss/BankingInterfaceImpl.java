@@ -121,8 +121,8 @@ public class BankingInterfaceImpl implements BankingInterface {
     }
 
     @Override
-    public void createCustomer(String firstName, String lastName, int svnr) {
-       // bank.createPerson(firstName, lastName, address, svnr, username, password);
+    public String createCustomer(String name, String givenname, String address, int svnr, String username, String password) {
+       return bank.createPerson(name, givenname, address, svnr, username, password).toString();
     }
 
     @Override
@@ -137,8 +137,8 @@ public class BankingInterfaceImpl implements BankingInterface {
 
 
     @Override
-    public String searchCustomer(String name, String givenname, Integer customerNr) throws BankingInterfaceException {
-        return null;
+    public String searchCustomer(Integer customerNr) throws BankingInterfaceException {
+        return bank.getPerson(customerNr).toString();
     }
 
     @Override

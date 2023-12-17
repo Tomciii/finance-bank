@@ -39,22 +39,23 @@ public class Bank {
     }
 
 
-    public boolean createPerson(String name, String givenname, String address, int svnr, String username, String password){
+
+    public Person createPerson(String name, String givenname, String address, int svnr, String username, String password){
         Person person = new Person(svnr, name, givenname, address,username, password);
         if(personDAO.findById(person.getSvnr())==null){
             try {
                 personDAO.persist(person);
-                return true;
+                return person;
             }
             catch (Exception e) {
                 //log.error("Problem while storing variable: "+e.getMessage(), e);
                 //Do not include the root cause as classes in the stack trace might not be available on the client
                 //and lead to ClassNotFoundExceptions when unmarshalling the server response.
                 //throw new BankingInterfaceException(e.getMessage());
-                return false;
+                return null;
             }
         }
-        return false;
+        return null;
     }
 
     public void storePerson(Person person) throws BankingInterfaceException {

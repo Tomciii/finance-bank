@@ -26,11 +26,12 @@ public interface BankingInterface {
 
     public void createPerson(String name, String givenname, String address, int svnr, String username, String password);
 
-    public void createCustomer(String firstName, String lastName, int svnr);
+    public String createCustomer(String name, String givenname, String address, int svnr, String username, String password);
 
     public void createEmployee(int snvt);
 
-    public String searchCustomer(String name, String givenname, Integer customerNr)  throws BankingInterfaceException;
+    // TODO: Return Person
+    public String searchCustomer(Integer customerNr)  throws BankingInterfaceException;
 
     public String getInvestableVolume() throws BankingInterfaceException;
 

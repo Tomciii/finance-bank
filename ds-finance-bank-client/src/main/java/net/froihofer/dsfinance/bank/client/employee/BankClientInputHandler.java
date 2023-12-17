@@ -33,16 +33,16 @@ class BankClientInputHandler {
         String address = InputHandler.getAddress();
         Integer customerNumber = InputHandler.getCustomerNumber();
 
-       bankingInterface.createCustomer(firstName, lastName, customerNumber);
+       String returnValue = bankingInterface.createCustomer(firstName, lastName, address, customerNumber, null, null);
+        System.out.println(returnValue);
     }
 
     public void searchCustomer() {
-        String firstName = InputHandler.getFirstName();
-        String lastName = InputHandler.getLastName();
         Integer customerNumber = InputHandler.getCustomerNumber();
 
         try {
-            bankingInterface.searchCustomer(firstName, lastName, customerNumber);
+            String value = bankingInterface.searchCustomer(customerNumber);
+            System.out.println(value);
         } catch (BankingInterfaceException e) {
             e.printStackTrace();
         }
