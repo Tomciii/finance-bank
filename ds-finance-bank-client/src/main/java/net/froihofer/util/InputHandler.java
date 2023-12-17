@@ -58,14 +58,20 @@ public class InputHandler {
         return stock;
     }
 
-    public static String getCustomerNumber() {
+    public static Integer getCustomerNumber() {
         String stock = "";
         while (stock.isEmpty()){
             System.out.print("Type in customer number> ");
             stock = scanner.nextLine();
+
+            try {
+                return Integer.parseInt(stock);
+            } catch (Exception e) {
+                stock = "";
+            }
         }
 
-        return stock;
+        return 0;
     }
 
     public static Double getAmount() {

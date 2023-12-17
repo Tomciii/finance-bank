@@ -31,15 +31,15 @@ class BankClientInputHandler {
         String firstName = InputHandler.getFirstName();
         String lastName = InputHandler.getLastName();
         String address = InputHandler.getAddress();
-        String customerNumber = InputHandler.getCustomerNumber();
+        Integer customerNumber = InputHandler.getCustomerNumber();
 
-       // bankingInterface.createCustomer();
+       bankingInterface.createCustomer(firstName, lastName, customerNumber);
     }
 
     public void searchCustomer() {
         String firstName = InputHandler.getFirstName();
         String lastName = InputHandler.getLastName();
-        String customerNumber = InputHandler.getCustomerNumber();
+        Integer customerNumber = InputHandler.getCustomerNumber();
 
         try {
             bankingInterface.searchCustomer(firstName, lastName, customerNumber);
