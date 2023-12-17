@@ -23,9 +23,9 @@ class BankClientConsole {
         // TODO - Implement rest of the inputhandler methods
         switch (input) {
             case "1": inputHandler.searchStockByName(); break;
-            case "2":  break;
-            case "3":  break;
-            case "4":  break;
+            case "2": inputHandler.buyStock(); break;
+            case "3": inputHandler.sellStock(); break;
+            case "4": inputHandler.displayDepotInfo(); break;
             case "HELP":  this.displayActions(); break;
             case "EXIT": isProcessing = false; break;
             default: break;
@@ -34,7 +34,7 @@ class BankClientConsole {
     }
 
     private void displayActions(){
-        System.out.println("Enter '1' to find a stock");
+        System.out.println("Enter '1' to search for a stock");
         System.out.println("Enter '2' to buy a stock");
         System.out.println("Enter '3' to sell a stock");
         System.out.println("Enter '4' to display details of your depot");

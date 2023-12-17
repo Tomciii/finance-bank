@@ -23,13 +23,13 @@ class BankClientConsole {
 
         // TODO - Implement rest of the inputhandler methods
         switch (input) {
-            case "1": inputHandler.searchStockByName(); break;
-            case "2": inputHandler.searchStockByName(); break;
-            case "3": break;
-            case "4": break;
-            case "5": break;
-            case "6": break;
-            case "7": break;
+            case "1": inputHandler.addCustomer(); break;
+            case "2": inputHandler.searchCustomer(); break;
+            case "3": inputHandler.searchStockByName(); break;
+            case "4": inputHandler.buyStockForCustomer(); break;
+            case "5": inputHandler.sellStockForCustomer(); break;
+            case "6": inputHandler.displayDepotInfoOfCustomer(); break;
+            case "7": inputHandler.displayInvestableVolume(); break;
             case "HELP": this.displayActions(); break;
             case "EXIT": isProcessing = false; break;
             default: break;

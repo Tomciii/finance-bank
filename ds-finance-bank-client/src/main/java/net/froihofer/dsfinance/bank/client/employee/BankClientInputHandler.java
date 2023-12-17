@@ -25,4 +25,23 @@ class BankClientInputHandler {
             e.printStackTrace();
         }
     }
+
+    public void addCustomer() {
+    }
+
+    public void searchCustomer() {
+    }
+
+    public void buyStockForCustomer() {
+        
+    }
+
+    public void sellStockForCustomer() {
+    }
+
+    public void displayDepotInfoOfCustomer() {
+    }
+
+    public void displayInvestableVolume() {
+    }
 }
