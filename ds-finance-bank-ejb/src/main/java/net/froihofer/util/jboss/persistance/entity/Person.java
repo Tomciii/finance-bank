@@ -45,6 +45,10 @@ public class Person implements Serializable{
         return name;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
     public String getGivenname() {
         return givenname;
     }

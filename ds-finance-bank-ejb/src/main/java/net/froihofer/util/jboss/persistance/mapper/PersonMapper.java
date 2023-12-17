@@ -5,18 +5,13 @@ import net.froihofer.util.jboss.persistance.entity.Person;
 
 public class PersonMapper {
 
-    // TODO Properly "translate" to Person
     public Person toEntity(PersonDTO person) {
         if (person == null) return null;
-        return new Person();
+        return new Person(person.getSvnr(), person.getName(), person.getGivenname(), person.getUsername(), person.getAddresse(), null);
     }
 
-    // TODO Properly "translate" to PersonDTO
-    /** Converts an entity instance to a DTO instance. */
     public PersonDTO toDTO(Person variable) {
         if (variable == null) return null;
-        return new PersonDTO();
+        return new PersonDTO(variable.getSvnr(), variable.getName(), variable.getGivenname(), variable.getUsername(), variable.getAddress());
     }
-
-
 }
