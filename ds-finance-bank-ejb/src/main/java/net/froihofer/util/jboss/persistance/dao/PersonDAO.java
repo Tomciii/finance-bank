@@ -13,7 +13,6 @@ public class PersonDAO {
 
     private EntityManager entityManager;
 
-
     public PersonDAO() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("ds-finance-bank-persunit");
         entityManager = emf.createEntityManager();

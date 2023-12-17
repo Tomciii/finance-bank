@@ -15,9 +15,6 @@ import java.io.IOException;
 
 public class BankService {
 
-    public String name;
-    private String password;
-
     @Inject
     PersonDAO personDAO;
 
@@ -25,10 +22,8 @@ public class BankService {
     PersonMapper personMapper;
 
     public BankService() {
-        name = "csdc24bb_03";
-        password = "oF0Queuhae";
-        SoapClientProperties.username = name;
-        SoapClientProperties.password = password;
+        SoapClientProperties.username = "csdc24bb_03";
+        SoapClientProperties.password = "oF0Queuhae";
         personDAO = new PersonDAO();
     }
 
@@ -80,7 +75,7 @@ public class BankService {
     public Person getPerson(int svnr) throws BankingInterfaceException {
         try {
             Person result = personDAO.findById(svnr);
-            if (result == null) throw new BankingInterfaceException("Variable \""+name+"\" not found.");
+            if (result == null) throw new BankingInterfaceException("Variable \""+svnr+"\" not found.");
             return result;
         }
         catch (Exception e) {
