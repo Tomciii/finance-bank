@@ -52,10 +52,6 @@ ids-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/soapclient/model/Tra
 cds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/soapclient/model/TradingWSException.java,0\2\023a0d81d9bde2b10a80ebe497631f8c0f01f705
 ù
 mds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/soapclient/model/TradingWSException_Exception.java,3\b\3b21b1b954e57260c1f77c9fb01f2d3a4c66bf16
-n
->ds-finance-bank-common/src/main/java/common/dto/PersonDTO.java,5\d\5d10ee68c1b3316ce391697de0f43a6827028c1c
-á
-Wds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/entity/PersonTranslator.java,c\e\ce38972b9ff804bf514f0f673f9b01aa690cd822
 ù
 mds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/soapclient/model/FindStockQuotesByCompanyName.java,1\a\1a924019c8110bbd6f3b207726f28d4934714bde
 •
