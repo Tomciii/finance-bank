@@ -2,6 +2,7 @@ package net.froihofer.dsfinance.bank.client.customer;
 
 import common.bankingInterface.BankingInterface;
 import common.bankingInterface.BankingInterfaceException;
+import net.froihofer.util.InputHandler;
 import net.froihofer.util.RmiProxyBuilder;
 
 import java.util.Scanner;
@@ -13,9 +14,8 @@ class BankClientInputHandler {
 
     void searchStockByName() {
         try {
-            System.out.print("Type in stock name: ");
-            String input = scanner.nextLine();
-            String result = bankingInterface.searchStockByName(input);
+            String stock = InputHandler.getStockName();
+            String result = bankingInterface.searchStockByName(stock);
             System.out.println(result);
         } catch (NullPointerException e) {
             e.printStackTrace();
@@ -26,9 +26,18 @@ class BankClientInputHandler {
     }
 
     public void buyStock() {
+        try {
+            String stock = InputHandler.getStockName();
+            Double amount = InputHandler.getAmount();
+
+        } catch (Exception e) {
+
+        }
     }
 
     public void sellStock() {
+        String stock = InputHandler.getStockName();
+        Double amount = InputHandler.getAmount();
     }
 
     public void displayDepotInfo() {
