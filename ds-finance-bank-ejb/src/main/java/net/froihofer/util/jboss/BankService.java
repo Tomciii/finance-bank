@@ -31,7 +31,7 @@ public class BankService {
     DepotDAO depotDAO;
 
     @Inject
-    StockDAO stockDAO;
+    SharesDAO stockDAO;
 
     @Inject
     BankDAO bankDAO;

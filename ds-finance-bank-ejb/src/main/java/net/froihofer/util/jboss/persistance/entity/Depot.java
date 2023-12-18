@@ -17,12 +17,12 @@ public class Depot implements Serializable {
     private Customer customer;
 
     @OneToMany(mappedBy = "DEPOT", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Stock> stocks = new ArrayList<>();
+    private List<Shares> shares = new ArrayList<>();
 
-    public Depot(int id, Customer customer, List<Stock> stocks) {
+    public Depot(int id, Customer customer, List<Shares> stocks) {
         this.id = id;
         this.customer = customer;
-        this.stocks = stocks;
+        this.shares = stocks;
     }
 
     public Depot() {
@@ -45,11 +45,11 @@ public class Depot implements Serializable {
         this.customer = customer;
     }
 
-    public List<Stock> getStocks() {
-        return stocks;
+    public List<Shares> getShares() {
+        return shares;
     }
 
-    public void setStocks(List<Stock> stocks) {
-        this.stocks = stocks;
+    public void setShares(List<Shares> stocks) {
+        this.shares = stocks;
     }
 }

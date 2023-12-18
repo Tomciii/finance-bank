@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "stocks")
-public class Stock implements Serializable {
+@Table(name = "shares")
+public class Shares implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -18,7 +18,7 @@ public class Stock implements Serializable {
     private String stockName;
     private int stockShares;
 
-    public Stock(int id, Depot bankDepot, String stockKey, String stockName, int stockShares) {
+    public Shares(int id, Depot bankDepot, String stockKey, String stockName, int stockShares) {
         this.id = id;
         this.bankDepot = bankDepot;
         this.stockKey = stockKey;
@@ -26,7 +26,7 @@ public class Stock implements Serializable {
         this.stockShares = stockShares;
     }
 
-    public Stock() {
+    public Shares() {
 
     }
 

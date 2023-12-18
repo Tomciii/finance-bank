@@ -5,15 +5,15 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 
-public class StockDAO {
+public class SharesDAO {
 
 
-    @PersistenceContext(unitName = "ds-finance-bank-stockunit")
+    @PersistenceContext(unitName = "ds-finance-bank-sharesunit")
 
     private EntityManager entityManager;
 
-    public StockDAO() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ds-finance-bank-stockunit");
+    public SharesDAO() {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ds-finance-bank-sharesunit");
         entityManager = emf.createEntityManager();
     }
 }
