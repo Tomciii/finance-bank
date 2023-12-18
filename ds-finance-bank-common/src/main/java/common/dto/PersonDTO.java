@@ -5,11 +5,11 @@ import java.io.Serializable;
 public class PersonDTO implements Serializable {
 
 
-    private int svnr;
-    private String name;
-    private String givenname;
-    private String username;
-    private String addresse;
+    protected int svnr;
+    protected String name;
+    protected String givenname;
+    protected String username;
+    protected String addresse;
 
     public PersonDTO() {
     }

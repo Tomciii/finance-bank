@@ -1,4 +1,4 @@
 package common.dto;
 
-public class EmployeeDTO {
+public class EmployeeDTO extends PersonDTO{
 }
