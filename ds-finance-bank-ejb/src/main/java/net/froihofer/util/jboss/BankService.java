@@ -1,11 +1,8 @@
 package net.froihofer.util.jboss;
 import common.bankingInterface.BankingInterfaceException;
 import jakarta.xml.bind.JAXBException;
-import net.froihofer.util.jboss.persistance.dao.CustomerDAO;
-import net.froihofer.util.jboss.persistance.dao.DepotDAO;
-import net.froihofer.util.jboss.persistance.dao.EmployeeDAO;
+import net.froihofer.util.jboss.persistance.dao.*;
 import net.froihofer.util.jboss.persistance.entity.Person;
-import net.froihofer.util.jboss.persistance.dao.PersonDAO;
 import net.froihofer.util.jboss.persistance.mapper.CustomerMapper;
 import net.froihofer.util.jboss.persistance.mapper.DepotMapper;
 import net.froihofer.util.jboss.persistance.mapper.EmployeeMapper;
@@ -32,6 +29,12 @@ public class BankService {
 
     @Inject
     DepotDAO depotDAO;
+
+    @Inject
+    StockDAO stockDAO;
+
+    @Inject
+    BankDAO bankDAO;
 
     @Inject
     PersonMapper personMapper;
