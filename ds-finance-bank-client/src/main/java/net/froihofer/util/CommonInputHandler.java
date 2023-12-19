@@ -3,9 +3,7 @@ package net.froihofer.util;
 import common.bankingInterface.BankingInterface;
 import common.bankingInterface.BankingInterfaceException;
 import common.dto.ListStockDTO;
-import common.dto.StockDTO;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class CommonInputHandler {
@@ -16,6 +14,16 @@ public class CommonInputHandler {
         String stock = "";
         while (stock.isEmpty()){
             System.out.print("Type in stock name> ");
+            stock = scanner.nextLine();
+        }
+
+        return stock;
+    }
+
+    public static String getStockSymbol() {
+        String stock = "";
+        while (stock.isEmpty()){
+            System.out.print("Type in symbol name> ");
             stock = scanner.nextLine();
         }
 
@@ -100,6 +108,7 @@ public class CommonInputHandler {
             String stock = getStockName();
             System.out.println("Searching for stock " + stock + "...");
             ListStockDTO result = bankingInterface.searchStockByName(stock);
+            System.out.println("Results for stock " + stock +":" );
             System.out.println(result);
         } catch (NullPointerException e) {
             e.printStackTrace();

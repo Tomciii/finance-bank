@@ -1,8 +1,6 @@
 package common.dto;
 
-import javax.xml.datatype.XMLGregorianCalendar;
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 public class StockDTO implements Serializable {
     protected String companyName;
