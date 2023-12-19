@@ -4,7 +4,6 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 @MappedSuperclass
-@Entity
 @Table(name="STORED_PERSON")
 public class Person implements Serializable{
     @Id

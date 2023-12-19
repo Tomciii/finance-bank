@@ -11,17 +11,16 @@ public class Shares implements Serializable {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "bank_depot_id")
-    private Depot bankDepot;
+    @JoinColumn(name = "depot_id")
+    private Depot depot;
 
-    private String stockKey;
     private String stockName;
+
     private int stockShares;
 
-    public Shares(int id, Depot bankDepot, String stockKey, String stockName, int stockShares) {
+    public Shares(int id, Depot depot, String stockName, int stockShares) {
         this.id = id;
-        this.bankDepot = bankDepot;
-        this.stockKey = stockKey;
+        this.depot = depot;
         this.stockName = stockName;
         this.stockShares = stockShares;
     }
@@ -38,21 +37,14 @@ public class Shares implements Serializable {
         this.id = id;
     }
 
-    public Depot getBankDepot() {
-        return bankDepot;
+    public Depot getDepot() {
+        return depot;
     }
 
-    public void setBankDepot(Depot bankDepot) {
-        this.bankDepot = bankDepot;
+    public void setDepot(Depot depot) {
+        this.depot = depot;
     }
 
-    public String getStockKey() {
-        return stockKey;
-    }
-
-    public void setStockKey(String stockKey) {
-        this.stockKey = stockKey;
-    }
 
     public String getStockName() {
         return stockName;
@@ -72,8 +64,9 @@ public class Shares implements Serializable {
 
     @Override
     public String toString() {
-        return "Stock{" +
-                ", bankDepot=" + bankDepot +
+        return "Shares{" +
+                "id=" + id +
+                ", depot=" + depot +
                 ", stockName='" + stockName + '\'' +
                 ", stockShares=" + stockShares +
                 '}';
