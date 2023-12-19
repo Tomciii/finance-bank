@@ -62,6 +62,16 @@ public class CommonInputHandler {
         return stock;
     }
 
+    public static String getPassword() {
+        String stock = "";
+        while (stock.isEmpty()){
+            System.out.print("Type in password> ");
+            stock = scanner.nextLine();
+        }
+
+        return stock;
+    }
+
     public static String getAddress() {
         String stock = "";
         while (stock.isEmpty()){

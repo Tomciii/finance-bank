@@ -7,9 +7,9 @@ public class TradeDTO implements Serializable {
 
     private String customerID;
     private String stockName;
-    private String amount;
+    private double amount;
 
-    public TradeDTO(String customerID, String stockName, String amount) {
+    public TradeDTO(String customerID, String stockName, double amount) {
         this.customerID = customerID;
         this.stockName = stockName;
         this.amount = amount;
@@ -31,11 +31,11 @@ public class TradeDTO implements Serializable {
         this.stockName = stockName;
     }
 
-    public String getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(String amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 }

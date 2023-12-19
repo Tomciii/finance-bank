@@ -1,5 +1,7 @@
 package net.froihofer.util.jboss.persistance.dao;
 
+import net.froihofer.util.jboss.persistance.entity.Depot;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -14,5 +16,13 @@ public class DepotDAO {
     public DepotDAO() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("ds-finance-bank-depotunit");
         entityManager = emf.createEntityManager();
+    }
+
+    public Depot findById(String svnr) {
+        return entityManager.find(Depot.class, svnr);
+    }
+
+    public void persist(Depot depot) {
+        entityManager.persist(depot);
     }
 }

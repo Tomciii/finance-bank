@@ -52,6 +52,9 @@ public class BankService {
         SoapClientProperties.username = "csdc24bb_03";
         SoapClientProperties.password = "oF0Queuhae";
         personDAO = new PersonDAO();
+        depotDAO = new DepotDAO();
+        customerDAO = new CustomerDAO();
+        employeeDAO = new EmployeeDAO();
     }
 
     public FindStockQuotesByCompanyNameResponse getFindStockQuotesByCompanyNameResponse(String name) throws JAXBException, IOException {

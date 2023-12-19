@@ -1,26 +1,25 @@
 package net.froihofer.util.jboss;
 
-import javax.annotation.Resource;
-import javax.annotation.security.PermitAll;
-import javax.ejb.Stateless;
-import javax.inject.Inject;
-
-
-import javax.ejb.SessionContext;
-import java.security.Principal;
-
-
 import common.bankingInterface.BankingInterface;
 import common.bankingInterface.BankingInterfaceException;
+import common.dto.DepotDTO;
 import common.dto.ListStockDTO;
-import common.dto.StockDTO;
+import common.dto.TradeDTO;
 import jakarta.xml.bind.JAXBException;
 import net.froihofer.util.jboss.persistance.dao.PersonDAO;
+import net.froihofer.util.jboss.persistance.entity.Depot;
+import net.froihofer.util.jboss.persistance.mapper.DepotMapper;
 import net.froihofer.util.jboss.persistance.mapper.PersonMapper;
 import net.froihofer.util.jboss.persistance.mapper.StockMapper;
 
+import javax.annotation.Resource;
+import javax.annotation.security.PermitAll;
+import javax.ejb.SessionContext;
+import javax.ejb.Stateless;
+import javax.inject.Inject;
 import java.io.IOException;
-import java.util.List;
+import java.security.Principal;
+import java.util.ArrayList;
 
 
 @Stateless(name="BankingInterfaceService")
@@ -34,6 +33,9 @@ public class BankingInterfaceImpl implements BankingInterface {
 
     @Inject
     StockMapper stockMapper;
+
+    @Inject
+    DepotMapper depotMapper;
 
     @Resource
     private SessionContext sessionContext;
@@ -114,12 +116,12 @@ public class BankingInterfaceImpl implements BankingInterface {
     }
 
     @Override
-    public void buySockByISIN(String ISIN, double amount, String customerNr) throws BankingInterfaceException {
+    public void buySockByISIN(TradeDTO tradeDTO) throws BankingInterfaceException {
 
     }
 
     @Override
-    public void sellStockByISIN(String ISIN, double amount, String customerNr) throws BankingInterfaceException {
+    public void sellStockByISIN(TradeDTO tradeDTO) throws BankingInterfaceException {
 
     }
 
@@ -129,8 +131,9 @@ public class BankingInterfaceImpl implements BankingInterface {
     }
 
     @Override
-    public String createCustomer(String name, String givenname, String address, int svnr, String username, String password) {
-       return bank.createPerson(name, givenname, address, svnr, username, password).toString();
+    public String createCustomer(String name, String givenname, String address, int customerNumber, String username, String password) {
+       bank.depotDAO.persist(new Depot(customerNumber, customerNumber, new ArrayList<>()));
+       return bank.createPerson(name, givenname, address, customerNumber, username, password).toString();
     }
 
     @Override
@@ -139,8 +142,8 @@ public class BankingInterfaceImpl implements BankingInterface {
     }
 
     @Override
-    public String[] getDepot(String customerNr) throws BankingInterfaceException {
-        return new String[0];
+    public DepotDTO getDepot(String customerNr) throws BankingInterfaceException {
+        return depotMapper.toDepotDTO(bank.depotDAO.findById(customerNr));
     }
 
 
@@ -153,9 +156,7 @@ public class BankingInterfaceImpl implements BankingInterface {
     public String getInvestableVolume() throws BankingInterfaceException {
         try {
             return bank.getFindStockQuotesByCompanyNameResponse("Apple").toString();
-        } catch (JAXBException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
+        } catch (JAXBException | IOException e) {
             throw new RuntimeException(e);
         }
     }

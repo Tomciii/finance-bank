@@ -12,12 +12,20 @@ public class Depot implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @OneToMany(mappedBy = "depot", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "DEPOT", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Shares> shares = new ArrayList<>();
+
+    public List<Shares> getShares() {
+        return shares;
+    }
 
     public Depot(int id, int customer, List<Shares> stocks) {
         this.id = id;
         this.shares = stocks;
+    }
+
+    public Depot(int id) {
+        this.id = id;
     }
 
     public Depot() {
@@ -32,10 +40,6 @@ public class Depot implements Serializable {
         this.id = id;
     }
 
-
-    public List<Shares> getShares() {
-        return shares;
-    }
 
     public void setShares(List<Shares> stocks) {
         this.shares = stocks;

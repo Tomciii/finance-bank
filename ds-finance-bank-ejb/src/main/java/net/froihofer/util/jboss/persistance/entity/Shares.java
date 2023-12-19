@@ -11,7 +11,7 @@ public class Shares implements Serializable {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "depot_id")
+    @JoinColumn(name = "depot_id", referencedColumnName = "id")
     private Depot depot;
 
     private String stockName;

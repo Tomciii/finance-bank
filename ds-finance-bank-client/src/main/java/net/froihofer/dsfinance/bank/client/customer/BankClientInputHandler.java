@@ -1,15 +1,14 @@
 package net.froihofer.dsfinance.bank.client.customer;
 
 import common.bankingInterface.BankingInterface;
+import common.bankingInterface.BankingInterfaceException;
+import common.dto.DepotDTO;
 import net.froihofer.util.CommonInputHandler;
 import net.froihofer.util.RmiProxyBuilder;
 
-import java.util.Scanner;
-
 class BankClientInputHandler {
-    private Scanner scanner = new Scanner(System.in);
     private RmiProxyBuilder rmiProxyBuilder = new RmiProxyBuilder();
-    BankingInterface bankingInterface = rmiProxyBuilder.getRmiProxy("customer", "customerpass");;
+    BankingInterface bankingInterface = rmiProxyBuilder.getRmiProxy("customer", "customerpass");
 
     void searchStockByName() {
         CommonInputHandler.searchStockByName(bankingInterface);
@@ -32,6 +31,10 @@ class BankClientInputHandler {
     }
 
     public void displayDepotInfo() {
-        // bankingInterface.getDepot();
+        try {
+            DepotDTO depotDTO = bankingInterface.getDepot("customer1");
+        } catch (BankingInterfaceException e) {
+            e.printStackTrace();
+        }
     }
 }

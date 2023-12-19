@@ -1,10 +1,10 @@
 package common.bankingInterface;
 
+import common.dto.DepotDTO;
 import common.dto.ListStockDTO;
-import common.dto.StockDTO;
+import common.dto.TradeDTO;
 
 import javax.ejb.Remote;
-import java.util.List;
 
 @Remote
 public interface BankingInterface {
@@ -19,14 +19,13 @@ public interface BankingInterface {
 
     String searchStockByISIN(String isin) throws BankingInterfaceException;
 
-    // TODO - Return StockDTO instead of string
     ListStockDTO searchStockByName(String name) throws BankingInterfaceException;
 
-    void buySockByISIN(String ISIN, double amount, String customerNr) throws BankingInterfaceException;
+    void buySockByISIN(TradeDTO tradeDTO) throws BankingInterfaceException;
 
-    void sellStockByISIN(String ISIN, double amount, String customerNr) throws BankingInterfaceException;
+    void sellStockByISIN(TradeDTO tradeDTO) throws BankingInterfaceException;
 
-    String[] getDepot(String customerNr) throws BankingInterfaceException;
+    DepotDTO getDepot(String customerNr) throws BankingInterfaceException;
 
     void createPerson(String name, String givenname, String address, int svnr, String username, String password);
 

@@ -1,5 +1,7 @@
 package net.froihofer.util.jboss.persistance.dao;
 
+import net.froihofer.util.jboss.persistance.entity.Shares;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -15,5 +17,9 @@ public class SharesDAO {
     public SharesDAO() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("ds-finance-bank-sharesunit");
         entityManager = emf.createEntityManager();
+    }
+
+    public void persist(Shares shares) {
+        entityManager.persist(shares);
     }
 }
