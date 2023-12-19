@@ -1,18 +1,20 @@
 package common.dto;
 
 import javax.xml.datatype.XMLGregorianCalendar;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class StockDTO {
+public class StockDTO implements Serializable {
     protected String companyName;
     protected Long floatShares;
-    protected BigDecimal lastTradePrice;
-    protected XMLGregorianCalendar lastTradeTime;
+    protected String lastTradePrice;
+    protected String lastTradeTime;
     protected Long marketCapitalization;
     protected String stockExchange;
     protected String symbol;
 
-    public StockDTO(String companyName, Long floatShares, BigDecimal lastTradePrice, XMLGregorianCalendar lastTradeTime, Long marketCapitalization, String stockExchange, String symbol) {
+
+    public StockDTO(String companyName, Long floatShares, String lastTradePrice, String lastTradeTime, Long marketCapitalization, String stockExchange, String symbol) {
         this.companyName = companyName;
         this.floatShares = floatShares;
         this.lastTradePrice = lastTradePrice;
@@ -38,19 +40,19 @@ public class StockDTO {
         this.floatShares = floatShares;
     }
 
-    public BigDecimal getLastTradePrice() {
+    public String getLastTradePrice() {
         return lastTradePrice;
     }
 
-    public void setLastTradePrice(BigDecimal lastTradePrice) {
+    public void setLastTradePrice(String lastTradePrice) {
         this.lastTradePrice = lastTradePrice;
     }
 
-    public XMLGregorianCalendar getLastTradeTime() {
+    public String getLastTradeTime() {
         return lastTradeTime;
     }
 
-    public void setLastTradeTime(XMLGregorianCalendar lastTradeTime) {
+    public void setLastTradeTime(String lastTradeTime) {
         this.lastTradeTime = lastTradeTime;
     }
 

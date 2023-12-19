@@ -1,4 +1,6 @@
 package common.dto;
 
-public class EmployeeDTO extends PersonDTO{
+import java.io.Serializable;
+
+public class EmployeeDTO extends PersonDTO implements Serializable {
 }

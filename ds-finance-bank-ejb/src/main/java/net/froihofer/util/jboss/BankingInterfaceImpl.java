@@ -12,11 +12,15 @@ import java.security.Principal;
 
 import common.bankingInterface.BankingInterface;
 import common.bankingInterface.BankingInterfaceException;
+import common.dto.ListStockDTO;
+import common.dto.StockDTO;
 import jakarta.xml.bind.JAXBException;
 import net.froihofer.util.jboss.persistance.dao.PersonDAO;
 import net.froihofer.util.jboss.persistance.mapper.PersonMapper;
+import net.froihofer.util.jboss.persistance.mapper.StockMapper;
 
 import java.io.IOException;
+import java.util.List;
 
 
 @Stateless(name="BankingInterfaceService")
@@ -27,6 +31,9 @@ public class BankingInterfaceImpl implements BankingInterface {
     PersonDAO personDAO;
     @Inject
     PersonMapper personTranslator;
+
+    @Inject
+    StockMapper stockMapper;
 
     @Resource
     private SessionContext sessionContext;
@@ -95,10 +102,10 @@ public class BankingInterfaceImpl implements BankingInterface {
     // TODO - Return something like a StockDTO which is in the commons so that client can also access the dto (Like The "PersonTranslator" class)
     // TODO - Catch a BankingInterfaceException here (And throw one inside the logic where needed)
     @Override
-    public String searchStockByName(String name) throws BankingInterfaceException {
+    public ListStockDTO searchStockByName(String name) throws BankingInterfaceException {
 
         try {
-            return bank.getFindStockQuotesByCompanyNameResponse(name).toString();
+            return stockMapper.toStockDTOList(bank.getFindStockQuotesByCompanyNameResponse(name));
         } catch (JAXBException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {

@@ -2,9 +2,11 @@ package net.froihofer.dsfinance.bank.client.employee;
 
 import common.bankingInterface.BankingInterface;
 import common.bankingInterface.BankingInterfaceException;
-import net.froihofer.util.InputHandler;
+import common.dto.StockDTO;
+import net.froihofer.util.CommonInputHandler;
 import net.froihofer.util.RmiProxyBuilder;
 
+import java.util.List;
 import java.util.Scanner;
 
 class BankClientInputHandler {
@@ -14,31 +16,21 @@ class BankClientInputHandler {
 
     // TODO Implement all the person persistance logic
     void searchStockByName() {
-        try {
-            System.out.print("Type in stock name: ");
-            String input = scanner.nextLine();
-            String result = bankingInterface.searchStockByName(input);
-            System.out.println(result);
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
-        catch (BankingInterfaceException e) {
-            e.printStackTrace();
-        }
+        CommonInputHandler.searchStockByName(bankingInterface);
     }
 
     public void addCustomer() {
-        String firstName = InputHandler.getFirstName();
-        String lastName = InputHandler.getLastName();
-        String address = InputHandler.getAddress();
-        Integer customerNumber = InputHandler.getCustomerNumber();
+        String firstName = CommonInputHandler.getFirstName();
+        String lastName = CommonInputHandler.getLastName();
+        String address = CommonInputHandler.getAddress();
+        Integer customerNumber = CommonInputHandler.getCustomerNumber();
 
        String returnValue = bankingInterface.createCustomer(firstName, lastName, address, customerNumber, null, null);
         System.out.println(returnValue);
     }
 
     public void searchCustomer() {
-        Integer customerNumber = InputHandler.getCustomerNumber();
+        Integer customerNumber = CommonInputHandler.getCustomerNumber();
 
         try {
             String value = bankingInterface.searchCustomer(customerNumber);
@@ -49,23 +41,23 @@ class BankClientInputHandler {
     }
 
     public void buyStockForCustomer() {
-        String userName = InputHandler.getUserName();
-        String stockName = InputHandler.getStockName();
-        Double amount = InputHandler.getAmount();
+        String userName = CommonInputHandler.getUserName();
+        String stockName = CommonInputHandler.getStockName();
+        Double amount = CommonInputHandler.getAmount();
 
       //  bankingInterface.buySockByISIN();
     }
 
     public void sellStockForCustomer() {
-        String userName = InputHandler.getUserName();
-        String stockName = InputHandler.getStockName();
-        Double amount = InputHandler.getAmount();
+        String userName = CommonInputHandler.getUserName();
+        String stockName = CommonInputHandler.getStockName();
+        Double amount = CommonInputHandler.getAmount();
 
        // bankingInterface.sellStockByISIN();
     }
 
     public void displayDepotInfoOfCustomer() {
-        String userName = InputHandler.getUserName();
+        String userName = CommonInputHandler.getUserName();
        // bankingInterface.getDepot();
     }
 

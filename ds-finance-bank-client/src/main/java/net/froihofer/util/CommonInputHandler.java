@@ -1,8 +1,14 @@
 package net.froihofer.util;
 
+import common.bankingInterface.BankingInterface;
+import common.bankingInterface.BankingInterfaceException;
+import common.dto.ListStockDTO;
+import common.dto.StockDTO;
+
+import java.util.List;
 import java.util.Scanner;
 
-public class InputHandler {
+public class CommonInputHandler {
 
     private static Scanner scanner = new Scanner(System.in);
 
@@ -87,5 +93,19 @@ public class InputHandler {
         }
 
         return 0.0;
+    }
+
+    public static void searchStockByName(BankingInterface bankingInterface) {
+        try {
+            String stock = getStockName();
+            System.out.println("Searching for stock " + stock + "...");
+            ListStockDTO result = bankingInterface.searchStockByName(stock);
+            System.out.println(result);
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+        catch (BankingInterfaceException e) {
+            e.printStackTrace();
+        }
     }
 }

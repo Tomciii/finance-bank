@@ -1,10 +1,15 @@
 package common.dto;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ListStockDTO {
+public class ListStockDTO implements Serializable {
 
     private List<StockDTO> list;
+
+    public ListStockDTO() {
+
+    }
 
     public ListStockDTO(List<StockDTO> list) {
         this.list = list;

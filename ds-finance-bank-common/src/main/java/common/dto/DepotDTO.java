@@ -1,4 +1,6 @@
 package common.dto;
 
-public class DepotDTO {
+import java.io.Serializable;
+
+public class DepotDTO implements Serializable {
 }
