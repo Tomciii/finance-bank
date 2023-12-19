@@ -2,6 +2,7 @@ package net.froihofer.util;
 
 import common.bankingInterface.BankingInterface;
 import common.bankingInterface.BankingInterfaceException;
+import common.dto.DepotDTO;
 import common.dto.ListStockDTO;
 
 import java.util.Scanner;
@@ -70,6 +71,15 @@ public class CommonInputHandler {
         }
 
         return stock;
+    }
+
+    public static void printDepotInfo(String customerNr, BankingInterface bankingInterface) {
+        try {
+            System.out.println("Loading Depot Info: ");
+            DepotDTO depotDTO = bankingInterface.getDepot("customer1");
+        } catch (BankingInterfaceException e) {
+            e.printStackTrace();
+        }
     }
 
     public static String getAddress() {

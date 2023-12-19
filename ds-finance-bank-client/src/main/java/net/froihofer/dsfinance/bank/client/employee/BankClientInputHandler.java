@@ -2,6 +2,7 @@ package net.froihofer.dsfinance.bank.client.employee;
 
 import common.bankingInterface.BankingInterface;
 import common.bankingInterface.BankingInterfaceException;
+import common.dto.DepotDTO;
 import common.dto.StockDTO;
 import net.froihofer.util.CommonInputHandler;
 import net.froihofer.util.RmiProxyBuilder;
@@ -58,7 +59,8 @@ class BankClientInputHandler {
 
     public void displayDepotInfoOfCustomer() {
         String userName = CommonInputHandler.getUserName();
-       // bankingInterface.getDepot();
+
+        CommonInputHandler.printDepotInfo(userName, bankingInterface);
     }
 
     public void displayInvestableVolume() {
