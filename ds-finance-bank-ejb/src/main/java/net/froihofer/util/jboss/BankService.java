@@ -55,6 +55,8 @@ public class BankService {
         depotDAO = new DepotDAO();
         customerDAO = new CustomerDAO();
         employeeDAO = new EmployeeDAO();
+        stockDAO = new SharesDAO();
+        bankDAO = new BankDAO();
     }
 
     public FindStockQuotesByCompanyNameResponse getFindStockQuotesByCompanyNameResponse(String name) throws JAXBException, IOException {
