@@ -7,7 +7,7 @@ public class PersonMapper {
 
     public Person toEntity(PersonDTO person) {
         if (person == null) return null;
-        return new Person(person.getSvnr(), person.getName(), person.getGivenname(), person.getUsername(), person.getAddresse(), null);
+        return new Person(person.getSvnr(), person.getName(), person.getGivenname(), person.getUsername(), person.getAddress(), null);
     }
 
     public PersonDTO toDTO(Person variable) {

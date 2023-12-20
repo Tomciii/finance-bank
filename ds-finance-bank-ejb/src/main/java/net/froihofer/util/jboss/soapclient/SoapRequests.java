@@ -24,6 +24,24 @@ public class SoapRequests {
         }
     }
 
+
+    public static FindStockQuotesByIsinResponse findStockQuotesByIsin(String input) throws IOException, JAXBException {
+        String soapRequest = SoapRequestBuilder.findStockQuotesByIsin(input);
+        HttpURLConnection connection = SoapClientProperties.getHttpURLConnection();
+
+        sendRequest(soapRequest, connection);
+
+        try (InputStream is = connection.getInputStream()) {
+            StringBuilder responseContent = getResponse(is);
+
+            System.out.println("Response Message: " + responseContent);
+
+            return SoapResponseUnmarshaller.extract(responseContent.toString(), FindStockQuotesByIsinResponse.class);
+        } finally {
+            connection.disconnect();
+        }
+    }
+
     public static BuyResponse buy(String symbol, int shares) throws IOException, JAXBException {
         String soapRequest = SoapRequestBuilder.buy(symbol, shares);
         HttpURLConnection connection = SoapClientProperties.getHttpURLConnection();

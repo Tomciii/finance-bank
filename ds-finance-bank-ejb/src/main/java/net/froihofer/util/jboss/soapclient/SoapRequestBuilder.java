@@ -14,6 +14,18 @@ public class SoapRequestBuilder {
                 "</soapenv:Envelope>";
     }
 
+    public static String findStockQuotesByIsin(String input) {
+        return "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" " +
+                "xmlns:trad=\"http://trading.ws.dsfinance.froihofer.net/\">\n" +
+                "   <soapenv:Header/>\n" +
+                "   <soapenv:Body>\n" +
+                "      <trad:findStockQuotesByIsin>\n" +
+                "         <partOfIsin>" + input + "</partOfIsin>\n" +
+                "      </trad:findStockQuotesByIsin>\n" +
+                "   </soapenv:Body>\n" +
+                "</soapenv:Envelope>";
+    }
+
     public static String buy(String symbol, int shares) {
         return "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" " +
                 "xmlns:trad=\"http://trading.ws.dsfinance.froihofer.net/\">\n" +

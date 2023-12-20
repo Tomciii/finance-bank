@@ -4,10 +4,13 @@ import common.bankingInterface.BankingInterface;
 import common.bankingInterface.BankingInterfaceException;
 import common.dto.DepotDTO;
 import common.dto.ListStockDTO;
+import common.dto.PersonDTO;
 import common.dto.TradeDTO;
 import jakarta.xml.bind.JAXBException;
 import net.froihofer.util.jboss.persistance.dao.PersonDAO;
 import net.froihofer.util.jboss.persistance.entity.Depot;
+import net.froihofer.util.jboss.persistance.entity.Employee;
+import net.froihofer.util.jboss.persistance.entity.Person;
 import net.froihofer.util.jboss.persistance.mapper.DepotMapper;
 import net.froihofer.util.jboss.persistance.mapper.PersonMapper;
 import net.froihofer.util.jboss.persistance.mapper.StockMapper;
@@ -93,8 +96,12 @@ public class BankingInterfaceImpl implements BankingInterface {
     }
 
     @Override
-    public String searchStockByISIN(String isin) throws BankingInterfaceException {
-        return bankService.getPerson(1102562345).toString();
+    public ListStockDTO searchStockByISIN(String isin) throws BankingInterfaceException {
+        try {
+            return stockMapper.toStockDTOList(bankService.getFindStockQuotesByIsinResponse(isin));
+        } catch (JAXBException | IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     // TODO - Return something like a StockDTO which is in the commons so that client can also access the dto (Like The "PersonTranslator" class)
@@ -104,7 +111,7 @@ public class BankingInterfaceImpl implements BankingInterface {
 
         try {
             return stockMapper.toStockDTOList(bankService.getFindStockQuotesByCompanyNameResponse(name));
-        } catch (JAXBException |IOException e) {
+        } catch (JAXBException | IOException e) {
             throw new RuntimeException(e);
         }
     }
@@ -120,19 +127,21 @@ public class BankingInterfaceImpl implements BankingInterface {
     }
 
     @Override
-    public void createPerson(String name, String givenname, String address, int svnr, String username, String password) {
-        bankService.createPerson(name, givenname, address, svnr, username, password);
+    public PersonDTO createPerson(String name, String givenname, String address, int svnr, String username, String password) {
+        var person = bankService.createPerson(name, givenname, address, svnr, username, password);
+        return personTranslator.toDTO(person);
     }
 
     @Override
-    public String createCustomer(String name, String givenname, String address, int customerNumber, String username, String password) {
+    public PersonDTO createCustomer(String name, String givenname, String address, int customerNumber, String username, String password) {
        bankService.depotDAO.persist(new Depot(customerNumber, customerNumber, new ArrayList<>()));
-       return bankService.createPerson(name, givenname, address, customerNumber, username, password).toString();
+       return createPerson(name, givenname, address, customerNumber, username, password);
     }
 
     @Override
-    public void createEmployee(int svnr) {
-
+    public PersonDTO createEmployee(int svnr, String name, String givenname, String address, String username, String password, int customerNr) {
+        bankService.employeeDAO.persist(new Employee(svnr, name, givenname, address, username, password, customerNr));
+        return createPerson(name, givenname, address, customerNr, username, password);
     }
 
     @Override
@@ -142,8 +151,8 @@ public class BankingInterfaceImpl implements BankingInterface {
 
 
     @Override
-    public String searchCustomer(Integer customerNr) throws BankingInterfaceException {
-        return bankService.getPerson(customerNr).toString();
+    public PersonDTO searchCustomer(Integer customerNr) throws BankingInterfaceException {
+        return personTranslator.toDTO(bankService.getPerson(customerNr));
     }
 
     @Override
@@ -154,7 +163,6 @@ public class BankingInterfaceImpl implements BankingInterface {
             throw new RuntimeException(e);
         }
     }
-
 
     @Override
     public long getVariable(String name) throws BankingInterfaceException {

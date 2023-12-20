@@ -10,6 +10,7 @@ import net.froihofer.util.jboss.persistance.mapper.PersonMapper;
 import net.froihofer.util.jboss.soapclient.SoapClient;
 import net.froihofer.util.jboss.soapclient.SoapClientProperties;
 import net.froihofer.util.jboss.soapclient.model.FindStockQuotesByCompanyNameResponse;
+import net.froihofer.util.jboss.soapclient.model.FindStockQuotesByIsinResponse;
 
 
 import javax.inject.Inject;
@@ -61,6 +62,10 @@ public class BankService {
 
     public FindStockQuotesByCompanyNameResponse getFindStockQuotesByCompanyNameResponse(String name) throws JAXBException, IOException {
         return SoapClient.findStockQuotesByCompanyName(name);
+    }
+
+    public FindStockQuotesByIsinResponse getFindStockQuotesByIsinResponse(String isin) throws JAXBException, IOException{
+        return SoapClient.findStockQuotesByIsin(isin);
     }
 
     public Person createPerson(String name, String givenname, String address, int svnr, String username, String password){

@@ -2,6 +2,7 @@ package common.bankingInterface;
 
 import common.dto.DepotDTO;
 import common.dto.ListStockDTO;
+import common.dto.PersonDTO;
 import common.dto.TradeDTO;
 
 import javax.ejb.Remote;
@@ -17,7 +18,7 @@ public interface BankingInterface {
 
     boolean isCustomer() throws BankingInterfaceException;
 
-    String searchStockByISIN(String isin) throws BankingInterfaceException;
+    ListStockDTO searchStockByISIN(String isin) throws BankingInterfaceException;
 
     ListStockDTO searchStockByName(String name) throws BankingInterfaceException;
 
@@ -25,16 +26,16 @@ public interface BankingInterface {
 
     void sellStockByISIN(TradeDTO tradeDTO) throws BankingInterfaceException;
 
+    PersonDTO createEmployee(int svnr, String name, String givenname, String address, String username, String password, int customerNr);
+
     DepotDTO getDepot(String customerNr) throws BankingInterfaceException;
 
-    void createPerson(String name, String givenname, String address, int svnr, String username, String password);
+    PersonDTO createPerson(String name, String givenname, String address, int svnr, String username, String password);
 
-    String createCustomer(String name, String givenname, String address, int svnr, String username, String password);
-
-    void createEmployee(int snvt);
+    PersonDTO createCustomer(String name, String givenname, String address, int svnr, String username, String password);
 
     // TODO: Return Person
-    String searchCustomer(Integer customerNr)  throws BankingInterfaceException;
+    PersonDTO searchCustomer(Integer customerNr)  throws BankingInterfaceException;
 
     String getInvestableVolume() throws BankingInterfaceException;
 

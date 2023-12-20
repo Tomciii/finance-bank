@@ -14,6 +14,11 @@ public class SoapClient {
         return SoapRequests.findStockQuotesByCompanyName(companyName);
     }
 
+    public static FindStockQuotesByIsinResponse findStockQuotesByIsin(String isin) throws JAXBException, IOException {
+        return SoapRequests.findStockQuotesByIsin(isin);
+    }
+
+
     public static BuyResponse buy(String symbol, int shares) throws JAXBException, IOException {
         return SoapRequests.buy(symbol, shares);
     }
