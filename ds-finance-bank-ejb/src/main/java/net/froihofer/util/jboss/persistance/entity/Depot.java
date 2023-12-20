@@ -16,9 +16,9 @@ public class Depot implements Serializable {
     @Column(name="CUSTOMERNR")
     private int customernr;
 
-
-    @OneToMany(mappedBy = "depot", orphanRemoval = true)
+    @OneToMany(mappedBy = "depot", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Shares> shares = new ArrayList<>();
+
 
     public List<Shares> getShares() {
         return shares;
@@ -52,19 +52,20 @@ public class Depot implements Serializable {
         this.shares = stocks;
     }
 
-    @Override
-    public String toString() {
-        return "Depot{" +
-                "id=" + id +
-                ", shares=" + shares +
-                '}';
-    }
-
     public int getCustomernr() {
         return customernr;
     }
 
     public void setCustomernr(int customerNr) {
         this.customernr = customerNr;
+    }
+
+    @Override
+    public String toString() {
+        return "Depot{" +
+                "id=" + id +
+                ", customernr=" + customernr +
+                ", shares=" + shares +
+                '}';
     }
 }

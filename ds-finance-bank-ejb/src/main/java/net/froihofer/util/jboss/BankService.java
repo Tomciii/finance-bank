@@ -3,6 +3,7 @@ package net.froihofer.util.jboss;
 import jakarta.xml.bind.JAXBException;
 import net.froihofer.util.jboss.persistance.dao.*;
 import net.froihofer.util.jboss.persistance.entity.Customer;
+import net.froihofer.util.jboss.persistance.entity.Depot;
 import net.froihofer.util.jboss.persistance.mapper.CustomerMapper;
 import net.froihofer.util.jboss.persistance.mapper.DepotMapper;
 import net.froihofer.util.jboss.persistance.mapper.EmployeeMapper;
@@ -12,6 +13,7 @@ import net.froihofer.util.jboss.soapclient.model.FindStockQuotesByCompanyNameRes
 
 import javax.inject.Inject;
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 public class BankService {
@@ -52,6 +54,10 @@ public class BankService {
         employeeDAO = new EmployeeDAO();
         stockDAO = new SharesDAO();
         bankDAO = new BankDAO();
+
+        depotDAO.persist(new Depot(1,1,new ArrayList<>()));
+        customerDAO.persist(new Customer(1,"test","test","test",1));
+
     }
 
     public FindStockQuotesByCompanyNameResponse getFindStockQuotesByCompanyNameResponse(String name) throws JAXBException, IOException {

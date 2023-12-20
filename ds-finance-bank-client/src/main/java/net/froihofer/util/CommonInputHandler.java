@@ -42,6 +42,16 @@ public class CommonInputHandler {
         return stock;
     }
 
+    public static String getCustomerID() {
+        String stock = "";
+        while (stock.isEmpty()){
+            System.out.print("Type in customer ID> ");
+            stock = scanner.nextLine();
+        }
+
+        return stock;
+    }
+
     public static String getFirstName() {
         String stock = "";
         while (stock.isEmpty()){

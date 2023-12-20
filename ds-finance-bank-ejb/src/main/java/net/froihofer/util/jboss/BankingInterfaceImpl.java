@@ -4,10 +4,12 @@ import common.bankingInterface.BankingInterface;
 import common.bankingInterface.BankingInterfaceException;
 import common.dto.DepotDTO;
 import common.dto.ListStockDTO;
+import common.dto.StockDTO;
 import common.dto.TradeDTO;
 import jakarta.xml.bind.JAXBException;
 import net.froihofer.util.jboss.persistance.entity.Customer;
 import net.froihofer.util.jboss.persistance.entity.Depot;
+import net.froihofer.util.jboss.persistance.entity.Shares;
 import net.froihofer.util.jboss.persistance.mapper.DepotMapper;
 import net.froihofer.util.jboss.persistance.mapper.StockMapper;
 
@@ -19,6 +21,8 @@ import javax.inject.Inject;
 import java.io.IOException;
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Stateless(name="BankingInterfaceService")
@@ -107,6 +111,22 @@ public class BankingInterfaceImpl implements BankingInterface {
     @Override
     public void buySockByISIN(TradeDTO tradeDTO) throws BankingInterfaceException {
 
+        List<Shares> shares = bankService.stockDAO.findByStockName(tradeDTO.getStockName());
+        Depot depot = bankService.depotDAO.findById(Integer.valueOf(tradeDTO.getCustomerID()));
+
+        if (shares != null && !shares.isEmpty()) {
+            Shares existingSharesEntry = shares.get(0);
+            existingSharesEntry.setStockShares(existingSharesEntry.getStockShares() + tradeDTO.getAmount());
+            bankService.stockDAO.merge(existingSharesEntry);
+
+
+            bankService.depotDAO.merge(depot);
+        } else {
+            Shares share = new Shares(depot, tradeDTO.getStockName(), tradeDTO.getAmount());
+            bankService.stockDAO.persist(share);
+            depot.getShares().add(share);
+            bankService.depotDAO.merge(depot);
+        }
     }
 
     @Override

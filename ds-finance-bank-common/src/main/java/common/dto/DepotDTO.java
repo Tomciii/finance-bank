@@ -1,6 +1,5 @@
 package common.dto;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +39,6 @@ public class DepotDTO implements Serializable {
     @Override
     public String toString() {
         return "DepotDTO{" +
-                "id=" + id +
                 ", shares=" + shares +
                 '}';
     }

@@ -74,15 +74,7 @@ q
 Ads-finance-bank-common/src/main/java/common/dto/ListStockDTO.java,b\b\bbd64936761e8bd119a08d65060549ca510e8a61
 p
 @ds-finance-bank-common/src/main/java/common/dto/CustomerDTO.java,9\2\92306ac97219e236828d2f737917209a9e9579ae
-m
-=ds-finance-bank-common/src/main/java/common/dto/StockDTO.java,3\2\3273138ed14c1a38305919255eb1e3d7b90c17fc
 ‡
 Wds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/persistance/entity/Bank.java,f\d\fd1c2e67a11ff93452e24ae5d04cd39bf3b9a57e
-n
->ds-finance-bank-common/src/main/java/common/dto/SharesDTO.java,1\9\19e687f09695160c1458e1f230f1da0c30b4f5a4
-m
-=ds-finance-bank-common/src/main/java/common/dto/TradeDTO.java,7\a\7ac6d982abb964ea02b54091373314b32b2fbaf0
-‘
-ads-finance-bank-client/src/main/java/net/froihofer/dsfinance/bank/client/customer/BankClient.java,a\8\a8df0335c309432f4c97cc5b874c90208d5a09b5
 ˜
 hds-finance-bank-client/src/main/java/net/froihofer/dsfinance/bank/client/customer/BankClientConsole.java,2\f\2f7517900e503ba963099a6b3c59e8a25792b752

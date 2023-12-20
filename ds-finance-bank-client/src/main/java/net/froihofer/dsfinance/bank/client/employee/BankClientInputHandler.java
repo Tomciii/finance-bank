@@ -4,6 +4,7 @@ import common.bankingInterface.BankingInterface;
 import common.bankingInterface.BankingInterfaceException;
 import common.dto.DepotDTO;
 import common.dto.StockDTO;
+import common.dto.TradeDTO;
 import net.froihofer.util.CommonInputHandler;
 import net.froihofer.util.RmiProxyBuilder;
 
@@ -42,28 +43,41 @@ class BankClientInputHandler {
     }
 
     public void buyStockForCustomer() {
-        String userName = CommonInputHandler.getUserName();
+        String customerID = CommonInputHandler.getCustomerID();
         String stockName = CommonInputHandler.getStockName();
         Double amount = CommonInputHandler.getAmount();
 
-      //  bankingInterface.buySockByISIN();
+        try {
+            bankingInterface.buySockByISIN(new TradeDTO(customerID, stockName, amount));
+        } catch (BankingInterfaceException e) {
+            e.printStackTrace();
+        }
     }
 
     public void sellStockForCustomer() {
-        String userName = CommonInputHandler.getUserName();
+        String customerID = CommonInputHandler.getCustomerID();
         String stockName = CommonInputHandler.getStockName();
         Double amount = CommonInputHandler.getAmount();
 
-       // bankingInterface.sellStockByISIN();
+        try {
+            bankingInterface.sellStockByISIN(new TradeDTO(customerID, stockName, amount));
+        } catch (BankingInterfaceException e) {
+            e.printStackTrace();
+        }
     }
 
     public void displayDepotInfoOfCustomer() {
-        String userName = CommonInputHandler.getUserName();
+        String customerID = CommonInputHandler.getCustomerID();
 
-        CommonInputHandler.printDepotInfo(1, bankingInterface);
+        CommonInputHandler.printDepotInfo(Integer.valueOf(customerID), bankingInterface);
     }
 
     public void displayInvestableVolume() {
-     //   bankingInterface.getInvestableVolume();
+        System.out.println("Investible volume: ");
+        try {
+            String volume = bankingInterface.getInvestableVolume();
+        } catch (BankingInterfaceException e) {
+            e.printStackTrace();
+        }
     }
 }

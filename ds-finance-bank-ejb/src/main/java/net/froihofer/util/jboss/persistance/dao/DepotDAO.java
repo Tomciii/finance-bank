@@ -1,6 +1,7 @@
 package net.froihofer.util.jboss.persistance.dao;
 
 import net.froihofer.util.jboss.persistance.entity.Depot;
+import net.froihofer.util.jboss.persistance.entity.Shares;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -27,5 +28,9 @@ public class DepotDAO {
         Depot depot1 = entityManager.merge(depot);
         entityManager.persist(depot1);
         entityManager.getTransaction().commit();
+    }
+
+    public Depot merge(Depot depot) {
+        return entityManager.merge(depot);
     }
 }

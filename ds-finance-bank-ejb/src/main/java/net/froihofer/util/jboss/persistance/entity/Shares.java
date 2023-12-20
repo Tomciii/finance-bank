@@ -19,10 +19,10 @@ public class Shares implements Serializable {
     private String stockName;
 
     @Column(name="STOCKSHARES")
-    private int stockShares;
+    private double stockShares;
 
-    public Shares(int id, Depot depot, String stockName, int stockShares) {
-        this.id = id;
+    public Shares( Depot depot, String stockName, double stockShares) {
+
         this.depot = depot;
         this.stockName = stockName;
         this.stockShares = stockShares;
@@ -57,11 +57,11 @@ public class Shares implements Serializable {
         this.stockName = stockName;
     }
 
-    public int getStockShares() {
+    public double getStockShares() {
         return stockShares;
     }
 
-    public void setStockShares(int stockShares) {
+    public void setStockShares(double stockShares) {
         this.stockShares = stockShares;
     }
 
@@ -69,7 +69,6 @@ public class Shares implements Serializable {
     public String toString() {
         return "Shares{" +
                 "id=" + id +
-                ", depot=" + depot +
                 ", stockName='" + stockName + '\'' +
                 ", stockShares=" + stockShares +
                 '}';
