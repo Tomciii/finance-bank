@@ -25,7 +25,7 @@ public interface BankingInterface {
 
     void sellStockByISIN(TradeDTO tradeDTO) throws BankingInterfaceException;
 
-    DepotDTO getDepot(String customerNr) throws BankingInterfaceException;
+    DepotDTO getDepot(int customerNr) throws BankingInterfaceException;
 
     void createPerson(String name, String givenname, String address, int svnr, String username, String password);
 

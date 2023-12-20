@@ -18,11 +18,14 @@ public class DepotDAO {
         entityManager = emf.createEntityManager();
     }
 
-    public Depot findById(String svnr) {
-        return entityManager.find(Depot.class, svnr);
+    public Depot findById(int id) {
+        return entityManager.find(Depot.class, id);
     }
 
     public void persist(Depot depot) {
-        entityManager.persist(depot);
+        entityManager.getTransaction().begin();
+        Depot depot1 = entityManager.merge(depot);
+        entityManager.persist(depot1);
+        entityManager.getTransaction().commit();
     }
 }

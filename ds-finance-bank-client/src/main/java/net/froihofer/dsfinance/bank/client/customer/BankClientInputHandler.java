@@ -29,6 +29,6 @@ class BankClientInputHandler {
     }
 
     public void displayDepotInfo() {
-        CommonInputHandler.printDepotInfo("customer", bankingInterface);
+        CommonInputHandler.printDepotInfo(1, bankingInterface);
     }
 }

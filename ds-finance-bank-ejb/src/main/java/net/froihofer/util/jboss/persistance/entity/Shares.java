@@ -6,6 +6,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "shares")
 public class Shares implements Serializable {
+    @Column(name = "ID")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -14,8 +15,10 @@ public class Shares implements Serializable {
     @JoinColumn(name = "depot_id", referencedColumnName = "id")
     private Depot depot;
 
+    @Column(name="STOCKNAME")
     private String stockName;
 
+    @Column(name="STOCKSHARES")
     private int stockShares;
 
     public Shares(int id, Depot depot, String stockName, int stockShares) {

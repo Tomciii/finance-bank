@@ -19,8 +19,8 @@ public class SharesDAO {
         entityManager = emf.createEntityManager();
     }
 
-    public Shares findById(String svnr) {
-        return entityManager.find(Shares.class, svnr);
+    public Shares findById(String id) {
+        return entityManager.find(Shares.class, id);
     }
 
     public void persist(Shares shares) {

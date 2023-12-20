@@ -49,6 +49,7 @@
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <jta-data-source>java:/datasources/DsFinanceBankDS</jta-data-source>
     <class>net.froihofer.util.jboss.persistance.entity.Depot</class>
+    <class>net.froihofer.util.jboss.persistance.entity.Shares</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.hbm2ddl.auto" value="update"/>
@@ -64,6 +65,7 @@
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <jta-data-source>java:/datasources/DsFinanceBankDS</jta-data-source>
     <class>net.froihofer.util.jboss.persistance.entity.Shares</class>
+    <class>net.froihofer.util.jboss.persistance.entity.Depot</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.hbm2ddl.auto" value="update"/>

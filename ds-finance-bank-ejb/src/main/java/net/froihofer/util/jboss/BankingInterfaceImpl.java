@@ -6,10 +6,9 @@ import common.dto.DepotDTO;
 import common.dto.ListStockDTO;
 import common.dto.TradeDTO;
 import jakarta.xml.bind.JAXBException;
-import net.froihofer.util.jboss.persistance.dao.PersonDAO;
+import net.froihofer.util.jboss.persistance.entity.Customer;
 import net.froihofer.util.jboss.persistance.entity.Depot;
 import net.froihofer.util.jboss.persistance.mapper.DepotMapper;
-import net.froihofer.util.jboss.persistance.mapper.PersonMapper;
 import net.froihofer.util.jboss.persistance.mapper.StockMapper;
 
 import javax.annotation.Resource;
@@ -25,11 +24,6 @@ import java.util.ArrayList;
 @Stateless(name="BankingInterfaceService")
 @PermitAll
 public class BankingInterfaceImpl implements BankingInterface {
-
-    @Inject
-    PersonDAO personDAO;
-    @Inject
-    PersonMapper personTranslator;
 
     @Inject
     StockMapper stockMapper;
@@ -94,7 +88,8 @@ public class BankingInterfaceImpl implements BankingInterface {
 
     @Override
     public String searchStockByISIN(String isin) throws BankingInterfaceException {
-        return bankService.getPerson(1102562345).toString();
+      //  return bankService.getPerson(1102562345).toString();
+        return null;
     }
 
     // TODO - Return something like a StockDTO which is in the commons so that client can also access the dto (Like The "PersonTranslator" class)
@@ -121,13 +116,17 @@ public class BankingInterfaceImpl implements BankingInterface {
 
     @Override
     public void createPerson(String name, String givenname, String address, int svnr, String username, String password) {
-        bankService.createPerson(name, givenname, address, svnr, username, password);
+      //  bankService.createPerson(name, givenname, address, svnr, username, password);
     }
+
 
     @Override
     public String createCustomer(String name, String givenname, String address, int customerNumber, String username, String password) {
-       bankService.depotDAO.persist(new Depot(customerNumber, customerNumber, new ArrayList<>()));
-       return bankService.createPerson(name, givenname, address, customerNumber, username, password).toString();
+        Depot depot = new Depot(customerNumber, customerNumber, new ArrayList<>());
+        Customer customer = new Customer(customerNumber, name, address, givenname, customerNumber);
+        bankService.depotDAO.persist(depot);
+        bankService.customerDAO.persist(customer);
+        return customer.toString();
     }
 
     @Override
@@ -136,14 +135,15 @@ public class BankingInterfaceImpl implements BankingInterface {
     }
 
     @Override
-    public DepotDTO getDepot(String customerNr) throws BankingInterfaceException {
+    public DepotDTO getDepot(int customerNr) throws BankingInterfaceException {
         return depotMapper.toDepotDTO(bankService.depotDAO.findById(customerNr));
     }
 
 
     @Override
     public String searchCustomer(Integer customerNr) throws BankingInterfaceException {
-        return bankService.getPerson(customerNr).toString();
+    //    return bankService.getPerson(customerNr).toString();
+        return null;
     }
 
     @Override

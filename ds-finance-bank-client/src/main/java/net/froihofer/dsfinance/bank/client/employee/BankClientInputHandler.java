@@ -60,7 +60,7 @@ class BankClientInputHandler {
     public void displayDepotInfoOfCustomer() {
         String userName = CommonInputHandler.getUserName();
 
-        CommonInputHandler.printDepotInfo(userName, bankingInterface);
+        CommonInputHandler.printDepotInfo(1, bankingInterface);
     }
 
     public void displayInvestableVolume() {

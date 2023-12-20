@@ -73,10 +73,10 @@ public class CommonInputHandler {
         return stock;
     }
 
-    public static void printDepotInfo(String customerNr, BankingInterface bankingInterface) {
+    public static void printDepotInfo(int customerNr, BankingInterface bankingInterface) {
         try {
             System.out.println("Loading Depot Info: ");
-            DepotDTO depotDTO = bankingInterface.getDepot("customer1");
+            DepotDTO depotDTO = bankingInterface.getDepot(customerNr);
         } catch (BankingInterfaceException e) {
             e.printStackTrace();
         }

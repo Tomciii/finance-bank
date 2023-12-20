@@ -8,9 +8,14 @@ import java.util.List;
 @Entity
 @Table(name="DEPOT")
 public class Depot implements Serializable {
+    @Column(name ="ID")
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
+    @Column(name="CUSTOMERNR")
+    private int customernr;
+
 
     @OneToMany(mappedBy = "depot", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Shares> shares = new ArrayList<>();
@@ -19,13 +24,15 @@ public class Depot implements Serializable {
         return shares;
     }
 
-    public Depot(int id, int customer, List<Shares> stocks) {
+    public Depot(int id, List<Shares> stocks) {
         this.id = id;
         this.shares = stocks;
     }
 
-    public Depot(int id) {
+    public Depot(int id, int customerNr, List<Shares> stocks) {
         this.id = id;
+        this.customernr = customerNr;
+        this.shares = stocks;
     }
 
     public Depot() {
@@ -51,5 +58,13 @@ public class Depot implements Serializable {
                 "id=" + id +
                 ", shares=" + shares +
                 '}';
+    }
+
+    public int getCustomernr() {
+        return customernr;
+    }
+
+    public void setCustomernr(int customerNr) {
+        this.customernr = customerNr;
     }
 }
