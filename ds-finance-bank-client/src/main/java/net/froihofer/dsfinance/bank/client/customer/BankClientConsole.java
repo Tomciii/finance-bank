@@ -13,24 +13,32 @@ class BankClientConsole {
     void processInput(){
         System.out.println("Welcome to the Banking Client Application for customers.");
         boolean isProcessing = true;
+        this.displayActions();
 
         while (isProcessing){
-        this.displayActions();
+         System.out.println(" ");
+         System.out.print("Input> ");
         String input = scanner.nextLine();
 
         // TODO - Implement rest of the inputhandler methods
         switch (input) {
             case "1": inputHandler.searchStockByName(); break;
-            case "2": inputHandler.searchStockByName(); break;
-            case "EXIT": isProcessing = false;
+            case "2": inputHandler.buyStock(); break;
+            case "3": inputHandler.sellStock(); break;
+            case "4": inputHandler.displayDepotInfo(); break;
+            case "HELP":  this.displayActions(); break;
+            case "EXIT": isProcessing = false; break;
             default: break;
          }
         }
     }
 
     private void displayActions(){
-        System.out.println("Enter '1' to find a stock based on a name");
-        System.out.println("Enter '2' to find a stock based on a name");
-        System.out.println("Enter '3' to find a stock based on a name");
+        System.out.println("Enter '1' to search for a stock");
+        System.out.println("Enter '2' to buy a stock");
+        System.out.println("Enter '3' to sell a stock");
+        System.out.println("Enter '4' to display details of your depot");
+        System.out.println("Enter 'HELP' to display all possible actions");
+        System.out.println("Enter 'EXIT' to exit");
     }
 }

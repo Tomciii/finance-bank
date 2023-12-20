@@ -1,21 +1,25 @@
 package net.froihofer.util.jboss;
 
-import javax.annotation.Resource;
-import javax.annotation.security.PermitAll;
-import javax.ejb.Stateless;
-import javax.inject.Inject;
-
-
-import javax.ejb.SessionContext;
-import java.security.Principal;
-
-
 import common.bankingInterface.BankingInterface;
 import common.bankingInterface.BankingInterfaceException;
+import common.dto.DepotDTO;
+import common.dto.ListStockDTO;
+import common.dto.TradeDTO;
 import jakarta.xml.bind.JAXBException;
-import net.froihofer.util.jboss.entity.*;
+import net.froihofer.util.jboss.persistance.dao.PersonDAO;
+import net.froihofer.util.jboss.persistance.entity.Depot;
+import net.froihofer.util.jboss.persistance.mapper.DepotMapper;
+import net.froihofer.util.jboss.persistance.mapper.PersonMapper;
+import net.froihofer.util.jboss.persistance.mapper.StockMapper;
 
+import javax.annotation.Resource;
+import javax.annotation.security.PermitAll;
+import javax.ejb.SessionContext;
+import javax.ejb.Stateless;
+import javax.inject.Inject;
 import java.io.IOException;
+import java.security.Principal;
+import java.util.ArrayList;
 
 
 @Stateless(name="BankingInterfaceService")
@@ -25,31 +29,33 @@ public class BankingInterfaceImpl implements BankingInterface {
     @Inject
     PersonDAO personDAO;
     @Inject
-    PersonTranslator personTranslator;
+    PersonMapper personTranslator;
+
+    @Inject
+    StockMapper stockMapper;
+
+    @Inject
+    DepotMapper depotMapper;
 
     @Resource
     private SessionContext sessionContext;
 
-    private final Bank bank = new Bank();
+    private final BankService bankService = new BankService();
 
     public boolean login(String username, String password) throws BankingInterfaceException {
         System.out.println("TestA");
         System.out.println(username);
         if(username=="test" && password=="test"){
             try {
-                bank.getFindStockQuotesByCompanyNameResponse("Apple");
-            } catch (JAXBException e) {
-                throw new RuntimeException(e);
-            } catch (IOException e) {
+                bankService.getFindStockQuotesByCompanyNameResponse("Apple");
+            } catch (JAXBException |IOException e) {
                 throw new RuntimeException(e);
             }
             return true;
         }else{
             try {
-                bank.getFindStockQuotesByCompanyNameResponse("Apple");
-            } catch (JAXBException e) {
-                throw new RuntimeException(e);
-            } catch (IOException e) {
+                bankService.getFindStockQuotesByCompanyNameResponse("Apple");
+            } catch (JAXBException |IOException e) {
                 throw new RuntimeException(e);
             }
             return true;
@@ -88,41 +94,40 @@ public class BankingInterfaceImpl implements BankingInterface {
 
     @Override
     public String searchStockByISIN(String isin) throws BankingInterfaceException {
-        return bank.getPerson(1102562345).toString();
+        return bankService.getPerson(1102562345).toString();
     }
 
     // TODO - Return something like a StockDTO which is in the commons so that client can also access the dto (Like The "PersonTranslator" class)
     // TODO - Catch a BankingInterfaceException here (And throw one inside the logic where needed)
     @Override
-    public String searchStockByName(String name) throws BankingInterfaceException {
+    public ListStockDTO searchStockByName(String name) throws BankingInterfaceException {
 
         try {
-            return bank.getFindStockQuotesByCompanyNameResponse(name).toString();
-        } catch (JAXBException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
+            return stockMapper.toStockDTOList(bankService.getFindStockQuotesByCompanyNameResponse(name));
+        } catch (JAXBException |IOException e) {
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    public void buySockByISIN(String ISIN, double amount, String customerNr) throws BankingInterfaceException {
+    public void buySockByISIN(TradeDTO tradeDTO) throws BankingInterfaceException {
 
     }
 
     @Override
-    public void sellStockByISIN(String ISIN, double amount, String customerNr) throws BankingInterfaceException {
+    public void sellStockByISIN(TradeDTO tradeDTO) throws BankingInterfaceException {
 
     }
 
     @Override
     public void createPerson(String name, String givenname, String address, int svnr, String username, String password) {
-        bank.createPerson(name, givenname, address, svnr, username, password);
+        bankService.createPerson(name, givenname, address, svnr, username, password);
     }
 
     @Override
-    public void createCustomer(int svnr) {
-
+    public String createCustomer(String name, String givenname, String address, int customerNumber, String username, String password) {
+       bankService.depotDAO.persist(new Depot(customerNumber, customerNumber, new ArrayList<>()));
+       return bankService.createPerson(name, givenname, address, customerNumber, username, password).toString();
     }
 
     @Override
@@ -131,23 +136,21 @@ public class BankingInterfaceImpl implements BankingInterface {
     }
 
     @Override
-    public String[] getDepot(String customerNr) throws BankingInterfaceException {
-        return new String[0];
+    public DepotDTO getDepot(String customerNr) throws BankingInterfaceException {
+        return depotMapper.toDepotDTO(bankService.depotDAO.findById(customerNr));
     }
 
 
     @Override
-    public String searchCustomer(String name, String givenname, String customerNr) throws BankingInterfaceException {
-        return null;
+    public String searchCustomer(Integer customerNr) throws BankingInterfaceException {
+        return bankService.getPerson(customerNr).toString();
     }
 
     @Override
     public String getInvestableVolume() throws BankingInterfaceException {
         try {
-            return bank.getFindStockQuotesByCompanyNameResponse("Apple").toString();
-        } catch (JAXBException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
+            return bankService.getFindStockQuotesByCompanyNameResponse("Apple").toString();
+        } catch (JAXBException | IOException e) {
             throw new RuntimeException(e);
         }
     }

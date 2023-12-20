@@ -1,9 +1,12 @@
 package net.froihofer.util.jboss;
 import common.bankingInterface.BankingInterfaceException;
 import jakarta.xml.bind.JAXBException;
-import net.froihofer.util.jboss.entity.Person;
-import net.froihofer.util.jboss.entity.PersonDAO;
-import net.froihofer.util.jboss.entity.PersonTranslator;
+import net.froihofer.util.jboss.persistance.dao.*;
+import net.froihofer.util.jboss.persistance.entity.Person;
+import net.froihofer.util.jboss.persistance.mapper.CustomerMapper;
+import net.froihofer.util.jboss.persistance.mapper.DepotMapper;
+import net.froihofer.util.jboss.persistance.mapper.EmployeeMapper;
+import net.froihofer.util.jboss.persistance.mapper.PersonMapper;
 import net.froihofer.util.jboss.soapclient.SoapClient;
 import net.froihofer.util.jboss.soapclient.SoapClientProperties;
 import net.froihofer.util.jboss.soapclient.model.FindStockQuotesByCompanyNameResponse;
@@ -13,48 +16,69 @@ import javax.inject.Inject;
 import java.io.IOException;
 
 
-public class Bank {
-
-    public String name;
-    private String password;
+public class BankService {
 
     @Inject
     PersonDAO personDAO;
 
     @Inject
-    PersonTranslator personTranslator;
+    CustomerDAO customerDAO;
 
+    @Inject
+    EmployeeDAO employeeDAO;
 
+    @Inject
+    DepotDAO depotDAO;
 
-    public Bank() {
-        name = "csdc24bb_03";
-        password = "oF0Queuhae";
-        SoapClientProperties.username = name;
-        SoapClientProperties.password = password;
+    @Inject
+    SharesDAO stockDAO;
+
+    @Inject
+    BankDAO bankDAO;
+
+    @Inject
+    PersonMapper personMapper;
+
+    @Inject
+    CustomerMapper customerMapper;
+
+    @Inject
+    EmployeeMapper employeeMapper;
+
+    @Inject
+    DepotMapper depotMapper;
+
+    public BankService() {
+        SoapClientProperties.username = "csdc24bb_03";
+        SoapClientProperties.password = "oF0Queuhae";
         personDAO = new PersonDAO();
+        depotDAO = new DepotDAO();
+        customerDAO = new CustomerDAO();
+        employeeDAO = new EmployeeDAO();
+        stockDAO = new SharesDAO();
+        bankDAO = new BankDAO();
     }
 
     public FindStockQuotesByCompanyNameResponse getFindStockQuotesByCompanyNameResponse(String name) throws JAXBException, IOException {
         return SoapClient.findStockQuotesByCompanyName(name);
     }
 
-
-    public boolean createPerson(String name, String givenname, String address, int svnr, String username, String password){
+    public Person createPerson(String name, String givenname, String address, int svnr, String username, String password){
         Person person = new Person(svnr, name, givenname, address,username, password);
         if(personDAO.findById(person.getSvnr())==null){
             try {
                 personDAO.persist(person);
-                return true;
+                return person;
             }
             catch (Exception e) {
                 //log.error("Problem while storing variable: "+e.getMessage(), e);
                 //Do not include the root cause as classes in the stack trace might not be available on the client
                 //and lead to ClassNotFoundExceptions when unmarshalling the server response.
                 //throw new BankingInterfaceException(e.getMessage());
-                return false;
+                return null;
             }
         }
-        return false;
+        return null;
     }
 
     public void storePerson(Person person) throws BankingInterfaceException {
@@ -83,7 +107,7 @@ public class Bank {
     public Person getPerson(int svnr) throws BankingInterfaceException {
         try {
             Person result = personDAO.findById(svnr);
-            if (result == null) throw new BankingInterfaceException("Variable \""+name+"\" not found.");
+            if (result == null) throw new BankingInterfaceException("Variable \""+svnr+"\" not found.");
             return result;
         }
         catch (Exception e) {

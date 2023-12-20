@@ -1,4 +1,6 @@
-package net.froihofer.util.jboss.entity;
+package net.froihofer.util.jboss.persistance.dao;
+
+import net.froihofer.util.jboss.persistance.entity.Person;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -10,7 +12,6 @@ public class PersonDAO {
     @PersistenceContext(unitName = "ds-finance-bank-persunit")
 
     private EntityManager entityManager;
-
 
     public PersonDAO() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("ds-finance-bank-persunit");

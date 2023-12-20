@@ -1,30 +1,27 @@
-package net.froihofer.util.jboss.entity;
+package net.froihofer.util.jboss.persistance.entity;
 
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-@Entity
+@MappedSuperclass
 @Table(name="STORED_PERSON")
 public class Person implements Serializable{
     @Id
-    private int svnr;
+    protected int svnr;
     @Column(name="name")
-    private String name;
+    protected String name;
 
     @Column(name="givenname")
-    private String givenname;
+    protected String givenname;
 
     @Column(name="username")
-    private String username;
+    protected String username;
 
     @Column(name="password")
-    private String password;
+    protected String password;
 
     @Column(name="address")
-    private String address;
+    protected String address;
 
     public Person() {}
 
@@ -43,6 +40,10 @@ public class Person implements Serializable{
 
     public String getName() {
         return name;
+    }
+
+    public String getAddress() {
+        return address;
     }
 
     public String getGivenname() {
