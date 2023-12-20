@@ -17,7 +17,7 @@ public class Depot implements Serializable {
     private int customernr;
 
 
-    @OneToMany(mappedBy = "depot", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "depot", orphanRemoval = true)
     private List<Shares> shares = new ArrayList<>();
 
     public List<Shares> getShares() {

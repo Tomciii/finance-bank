@@ -10,12 +10,12 @@ import javax.persistence.PersistenceContext;
 public class SharesDAO {
 
 
-    @PersistenceContext(unitName = "ds-finance-bank-sharesunit")
+    @PersistenceContext(unitName = "ds-finance-bank-depotunit")
 
     private EntityManager entityManager;
 
     public SharesDAO() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ds-finance-bank-sharesunit");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ds-finance-bank-depotunit");
         entityManager = emf.createEntityManager();
     }
 

@@ -77,6 +77,7 @@ public class CommonInputHandler {
         try {
             System.out.println("Loading Depot Info: ");
             DepotDTO depotDTO = bankingInterface.getDepot(customerNr);
+            System.out.println(depotDTO);
         } catch (BankingInterfaceException e) {
             e.printStackTrace();
         }

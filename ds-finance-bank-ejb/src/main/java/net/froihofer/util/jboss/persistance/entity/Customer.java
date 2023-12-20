@@ -100,4 +100,16 @@ public class Customer implements Serializable {
     public void setAddresse(String addresse) {
         this.addresse = addresse;
     }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", customernr=" + customernr +
+                ", givenname='" + givenname + '\'' +
+                ", name='" + name + '\'' +
+                ", addresse='" + addresse + '\'' +
+                ", bankDepotID=" + bankDepotID +
+                '}';
+    }
 }

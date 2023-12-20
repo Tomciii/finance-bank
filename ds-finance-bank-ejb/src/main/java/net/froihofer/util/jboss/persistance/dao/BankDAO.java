@@ -6,12 +6,12 @@ import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 
 public class BankDAO {
-    @PersistenceContext(unitName = "ds-finance-bank-bankunit")
+    @PersistenceContext(unitName = "ds-finance-bank-depotunit")
 
     private EntityManager entityManager;
 
     public BankDAO() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ds-finance-bank-bankunit");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ds-finance-bank-depotunit");
         entityManager = emf.createEntityManager();
     }
 }

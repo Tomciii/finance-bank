@@ -142,8 +142,7 @@ public class BankingInterfaceImpl implements BankingInterface {
 
     @Override
     public String searchCustomer(Integer customerNr) throws BankingInterfaceException {
-    //    return bankService.getPerson(customerNr).toString();
-        return null;
+     return bankService.customerDAO.findById(customerNr).toString();
     }
 
     @Override

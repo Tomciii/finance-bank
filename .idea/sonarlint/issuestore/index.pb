@@ -54,8 +54,6 @@ _ds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/soapclient/model/Get
 Uds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/soapclient/model/Sell.java,5\3\534688beda8f1d1d695a34a0d58c34c085c8b3a0
 ‘
 ads-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/soapclient/model/PublicStockQuote.java,5\a\5a40cf1275511f249a636760fc6ca0a118968cc7
-ˆ
-Xds-finance-bank-ejb/src/main/java/net/froihofer/util/jboss/util/WildflyAuthDBHelper.java,6\c\6cbd472b57a6f62c596d287a8bda8087516b1c31
 _
 /ds-finance-bank-common/src/main/java/README.txt,a\6\a631485fa032ca0dc4b0cba1794499069d936571
 ˜
@@ -88,7 +86,3 @@ m
 ads-finance-bank-client/src/main/java/net/froihofer/dsfinance/bank/client/customer/BankClient.java,a\8\a8df0335c309432f4c97cc5b874c90208d5a09b5
 ˜
 hds-finance-bank-client/src/main/java/net/froihofer/dsfinance/bank/client/customer/BankClientConsole.java,2\f\2f7517900e503ba963099a6b3c59e8a25792b752
-€
-Pds-finance-bank-client/src/main/java/net/froihofer/util/AuthCallbackHandler.java,3\d\3dea51865ae29edb65c39b41853e5a3c9058db04
-|
-Lds-finance-bank-client/src/main/java/net/froihofer/util/RmiProxyBuilder.java,5\1\51a443a5019c53b9ae6a05ee37abc42bed411d1c
