@@ -47,7 +47,7 @@ public class SharesDTO implements Serializable {
     @Override
     public String toString() {
         return "SharesDTO{" +
-                ", stockName='" + stockName + '\'' +
+                "stockName='" + stockName + '\'' +
                 ", stockShares=" + stockShares +
                 '}';
     }

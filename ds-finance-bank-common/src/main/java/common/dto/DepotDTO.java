@@ -39,7 +39,7 @@ public class DepotDTO implements Serializable {
     @Override
     public String toString() {
         return "DepotDTO{" +
-                ", shares=" + shares +
+                " shares=" + shares +
                 '}';
     }
 }

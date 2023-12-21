@@ -136,6 +136,7 @@ public class CommonInputHandler {
 
     public static void searchStockByName(BankingInterface bankingInterface) {
         try {
+            System.out.println("Searching Stock: ");
             String stock = getStockName();
             System.out.println("Searching for stock " + stock + "...");
             ListStockDTO result = bankingInterface.searchStockByName(stock);

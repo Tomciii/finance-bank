@@ -43,6 +43,7 @@ class BankClientInputHandler {
     }
 
     public void buyStockForCustomer() {
+        System.out.println("Buying Stock: ");
         String customerID = CommonInputHandler.getCustomerID();
         String stockName = CommonInputHandler.getStockName();
         Double amount = CommonInputHandler.getAmount();
@@ -55,6 +56,7 @@ class BankClientInputHandler {
     }
 
     public void sellStockForCustomer() {
+        System.out.println("Selling Stock: ");
         String customerID = CommonInputHandler.getCustomerID();
         String stockName = CommonInputHandler.getStockName();
         Double amount = CommonInputHandler.getAmount();
@@ -67,13 +69,14 @@ class BankClientInputHandler {
     }
 
     public void displayDepotInfoOfCustomer() {
+        System.out.println("Depot Info: ");
         String customerID = CommonInputHandler.getCustomerID();
 
         CommonInputHandler.printDepotInfo(Integer.valueOf(customerID), bankingInterface);
     }
 
     public void displayInvestableVolume() {
-        System.out.println("Investible volume: ");
+        System.out.println("Investible Volume: ");
         try {
             String volume = bankingInterface.getInvestableVolume();
         } catch (BankingInterfaceException e) {

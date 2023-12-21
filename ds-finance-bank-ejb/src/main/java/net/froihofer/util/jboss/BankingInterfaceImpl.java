@@ -18,6 +18,7 @@ import javax.annotation.security.PermitAll;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.validation.constraints.Null;
 import java.io.IOException;
 import java.security.Principal;
 import java.util.ArrayList;
@@ -115,23 +116,42 @@ public class BankingInterfaceImpl implements BankingInterface {
         Depot depot = bankService.depotDAO.findById(Integer.valueOf(tradeDTO.getCustomerID()));
 
         if (shares != null && !shares.isEmpty()) {
-            Shares existingSharesEntry = shares.get(0);
-            existingSharesEntry.setStockShares(existingSharesEntry.getStockShares() + tradeDTO.getAmount());
-            bankService.stockDAO.merge(existingSharesEntry);
 
+            Shares existingSharesEntry = findExistingShare(tradeDTO, shares);
+
+            if (existingSharesEntry != null) {
+                buyMoreOfExistingShare(tradeDTO, depot, existingSharesEntry);
+            } else {
+                buyNewShare(depot, tradeDTO);
+            }
 
             bankService.depotDAO.merge(depot);
         } else {
-            Shares share = new Shares(depot, tradeDTO.getStockName(), tradeDTO.getAmount());
-            bankService.stockDAO.persist(share);
-            depot.getShares().add(share);
+            buyNewShare(depot, tradeDTO);
             bankService.depotDAO.merge(depot);
         }
     }
 
     @Override
     public void sellStockByISIN(TradeDTO tradeDTO) throws BankingInterfaceException {
+        Depot depot = bankService.depotDAO.findById(Integer.valueOf(tradeDTO.getCustomerID()));
 
+        if (depot == null || depot.getShares() == null || depot.getShares().isEmpty()) {
+            return; // throw NoDepotExistantException or NullPointer
+        }
+
+        List<Shares> shares = bankService.stockDAO.findByStockName(tradeDTO.getStockName());
+        Shares existingSharesEntry = findExistingShare(tradeDTO, shares);
+
+        if (existingSharesEntry == null) {
+            return;
+        }
+
+        existingSharesEntry.setStockShares(existingSharesEntry.getStockShares() - tradeDTO.getAmount()); // Throw "InvalidArgumentException" if negative number in total
+        bankService.stockDAO.merge(existingSharesEntry);
+        depot.getShares().removeIf(share -> tradeDTO.getStockName().equals(share.getStockName()));
+        depot.getShares().add(existingSharesEntry);
+        bankService.depotDAO.merge(depot);
     }
 
     @Override
@@ -167,16 +187,33 @@ public class BankingInterfaceImpl implements BankingInterface {
 
     @Override
     public String getInvestableVolume() throws BankingInterfaceException {
-        try {
-            return bankService.getFindStockQuotesByCompanyNameResponse("Apple").toString();
-        } catch (JAXBException | IOException e) {
-            throw new RuntimeException(e);
-        }
+        return bankService.bankDAO.findById(1).getInvestableVolume().toString();
     }
 
 
     @Override
     public long getVariable(String name) throws BankingInterfaceException {
         return 0;
+    }
+
+    private void buyNewShare(Depot depot, TradeDTO tradeDTO) {
+        Shares share = new Shares(depot, tradeDTO.getStockName(), tradeDTO.getAmount());
+        bankService.stockDAO.persist(share);
+        depot.getShares().add(share);
+    }
+
+    private void buyMoreOfExistingShare(TradeDTO tradeDTO, Depot depot, Shares existingSharesEntry) {
+        existingSharesEntry.setStockShares(existingSharesEntry.getStockShares() + tradeDTO.getAmount());
+        bankService.stockDAO.merge(existingSharesEntry);
+        depot.getShares().removeIf(share -> tradeDTO.getStockName().equals(share.getStockName()));
+        depot.getShares().add(existingSharesEntry);
+    }
+
+    private Shares findExistingShare(TradeDTO tradeDTO, List<Shares> shares) {
+        Shares existingSharesEntry = shares.stream()
+                .filter(share -> tradeDTO.getStockName().equals(share.getStockName()))
+                .findFirst()
+                .orElse(null);
+        return existingSharesEntry;
     }
 }

@@ -2,6 +2,7 @@ package net.froihofer.util.jboss;
 
 import jakarta.xml.bind.JAXBException;
 import net.froihofer.util.jboss.persistance.dao.*;
+import net.froihofer.util.jboss.persistance.entity.Bank;
 import net.froihofer.util.jboss.persistance.entity.Customer;
 import net.froihofer.util.jboss.persistance.entity.Depot;
 import net.froihofer.util.jboss.persistance.mapper.CustomerMapper;
@@ -57,7 +58,7 @@ public class BankService {
 
         depotDAO.persist(new Depot(1,1,new ArrayList<>()));
         customerDAO.persist(new Customer(1,"test","test","test",1));
-
+        bankDAO.persist(new Bank(1, "TestBank", 100000.0));
     }
 
     public FindStockQuotesByCompanyNameResponse getFindStockQuotesByCompanyNameResponse(String name) throws JAXBException, IOException {

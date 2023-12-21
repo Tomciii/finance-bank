@@ -15,6 +15,7 @@ class BankClientInputHandler {
     }
 
     public void buyStock() {
+        System.out.println("Buying Stock: ");
             String stock = CommonInputHandler.getStockName();
             Double amount = CommonInputHandler.getAmount();
 
@@ -26,6 +27,7 @@ class BankClientInputHandler {
     }
 
     public void sellStock() {
+        System.out.println("Selling Stock: ");
         String stock = CommonInputHandler.getStockName();
         Double amount = CommonInputHandler.getAmount();
 
@@ -37,6 +39,7 @@ class BankClientInputHandler {
     }
 
     public void displayDepotInfo() {
+        System.out.println("Depot Info: ");
         CommonInputHandler.printDepotInfo(1, bankingInterface);
     }
 }

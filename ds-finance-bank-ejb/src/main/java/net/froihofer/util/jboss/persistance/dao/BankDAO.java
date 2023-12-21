@@ -1,5 +1,8 @@
 package net.froihofer.util.jboss.persistance.dao;
 
+import net.froihofer.util.jboss.persistance.entity.Bank;
+import net.froihofer.util.jboss.persistance.entity.Customer;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -13,5 +16,16 @@ public class BankDAO {
     public BankDAO() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("ds-finance-bank-depotunit");
         entityManager = emf.createEntityManager();
+    }
+
+    public Bank findById(int id) {
+        return entityManager.find(Bank.class, id);
+    }
+
+    public void persist(Bank bank) {
+        entityManager.getTransaction().begin();
+        Bank managedBank = entityManager.merge(bank);
+        entityManager.persist(managedBank);
+        entityManager.getTransaction().commit();
     }
 }
