@@ -35,8 +35,6 @@ public class BankService {
     @Inject
     BankDAO bankDAO;
 
-
-
     @Inject
     CustomerMapper customerMapper;
 

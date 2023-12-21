@@ -12,6 +12,7 @@ import net.froihofer.util.jboss.persistance.entity.Depot;
 import net.froihofer.util.jboss.persistance.entity.Shares;
 import net.froihofer.util.jboss.persistance.mapper.DepotMapper;
 import net.froihofer.util.jboss.persistance.mapper.StockMapper;
+import net.froihofer.util.jboss.soapclient.SoapClient;
 
 import javax.annotation.Resource;
 import javax.annotation.security.PermitAll;
@@ -126,9 +127,11 @@ public class BankingInterfaceImpl implements BankingInterface {
             buyNewShare(depot, tradeDTO);
             bankService.depotDAO.merge(depot);
             removeFromInvestableVolume(bank, tradeDTO);
+
+            callSoapClientBuyMethod(tradeDTO);
+
             return;
         }
-
 
             Shares existingSharesEntry = findExistingShare(tradeDTO, shares);
 
@@ -138,7 +141,9 @@ public class BankingInterfaceImpl implements BankingInterface {
                 buyNewShare(depot, tradeDTO);
             }
 
-            removeFromInvestableVolume(bank, tradeDTO);
+        callSoapClientBuyMethod(tradeDTO);
+
+        removeFromInvestableVolume(bank, tradeDTO);
             bankService.depotDAO.merge(depot);
     }
 
@@ -165,6 +170,8 @@ public class BankingInterfaceImpl implements BankingInterface {
         bankService.depotDAO.merge(depot);
 
         addToInvestableVolume(bank, tradeDTO);
+
+        callSoapClientSellMethod(tradeDTO);
     }
 
     @Override
@@ -234,16 +241,31 @@ public class BankingInterfaceImpl implements BankingInterface {
     }
 
     private Shares findExistingShare(TradeDTO tradeDTO, List<Shares> shares) {
-        Shares existingSharesEntry = shares.stream()
+        return shares.stream()
                 .filter(share -> tradeDTO.getStockName().equals(share.getStockName()))
                 .findFirst()
                 .orElse(null);
-        return existingSharesEntry;
     }
 
     private void removeFromInvestableVolume(Bank bank, TradeDTO tradeDTO) {
         bank.setInvestableVolume(bank.getInvestableVolume() - tradeDTO.getAmount());
         bankService.bankDAO.persist(bank);
+    }
+
+    private void callSoapClientSellMethod(TradeDTO tradeDTO) {
+        try {
+            SoapClient.sell(tradeDTO.getStockName(), (int) tradeDTO.getAmount());
+        } catch (JAXBException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void callSoapClientBuyMethod(TradeDTO tradeDTO) {
+        try {
+            SoapClient.buy(tradeDTO.getStockName(), (int) tradeDTO.getAmount());
+        } catch (JAXBException | IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void addToInvestableVolume(Bank bank, TradeDTO tradeDTO) {
