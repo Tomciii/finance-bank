@@ -79,6 +79,7 @@ class BankClientInputHandler {
         System.out.println("Investible Volume: ");
         try {
             String volume = bankingInterface.getInvestableVolume();
+            System.out.println(volume);
         } catch (BankingInterfaceException e) {
             e.printStackTrace();
         }

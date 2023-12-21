@@ -4,9 +4,9 @@ import common.bankingInterface.BankingInterface;
 import common.bankingInterface.BankingInterfaceException;
 import common.dto.DepotDTO;
 import common.dto.ListStockDTO;
-import common.dto.StockDTO;
 import common.dto.TradeDTO;
 import jakarta.xml.bind.JAXBException;
+import net.froihofer.util.jboss.persistance.entity.Bank;
 import net.froihofer.util.jboss.persistance.entity.Customer;
 import net.froihofer.util.jboss.persistance.entity.Depot;
 import net.froihofer.util.jboss.persistance.entity.Shares;
@@ -18,12 +18,10 @@ import javax.annotation.security.PermitAll;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.validation.constraints.Null;
 import java.io.IOException;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 @Stateless(name="BankingInterfaceService")
@@ -112,10 +110,25 @@ public class BankingInterfaceImpl implements BankingInterface {
     @Override
     public void buySockByISIN(TradeDTO tradeDTO) throws BankingInterfaceException {
 
-        List<Shares> shares = bankService.stockDAO.findByStockName(tradeDTO.getStockName());
-        Depot depot = bankService.depotDAO.findById(Integer.valueOf(tradeDTO.getCustomerID()));
+        Bank bank = bankService.bankDAO.findById(1);
 
-        if (shares != null && !shares.isEmpty()) {
+        if (bank == null || bank.getInvestableVolume() < tradeDTO.getAmount()) {
+            return; // throw new InvalidArgumentException or something
+        }
+
+        Depot depot = bankService.depotDAO.findById(Integer.valueOf(tradeDTO.getCustomerID()));
+        if (depot == null) {
+            return; // throw NoDepotExistantException or NullPointer
+        }
+
+        List<Shares> shares = bankService.stockDAO.findByStockName(tradeDTO.getStockName());
+        if (shares == null || shares.isEmpty()) {
+            buyNewShare(depot, tradeDTO);
+            bankService.depotDAO.merge(depot);
+            removeFromInvestableVolume(bank, tradeDTO);
+            return;
+        }
+
 
             Shares existingSharesEntry = findExistingShare(tradeDTO, shares);
 
@@ -125,16 +138,14 @@ public class BankingInterfaceImpl implements BankingInterface {
                 buyNewShare(depot, tradeDTO);
             }
 
+            removeFromInvestableVolume(bank, tradeDTO);
             bankService.depotDAO.merge(depot);
-        } else {
-            buyNewShare(depot, tradeDTO);
-            bankService.depotDAO.merge(depot);
-        }
     }
 
     @Override
     public void sellStockByISIN(TradeDTO tradeDTO) throws BankingInterfaceException {
         Depot depot = bankService.depotDAO.findById(Integer.valueOf(tradeDTO.getCustomerID()));
+        Bank bank = bankService.bankDAO.findById(1);
 
         if (depot == null || depot.getShares() == null || depot.getShares().isEmpty()) {
             return; // throw NoDepotExistantException or NullPointer
@@ -152,6 +163,8 @@ public class BankingInterfaceImpl implements BankingInterface {
         depot.getShares().removeIf(share -> tradeDTO.getStockName().equals(share.getStockName()));
         depot.getShares().add(existingSharesEntry);
         bankService.depotDAO.merge(depot);
+
+        addToInvestableVolume(bank, tradeDTO);
     }
 
     @Override
@@ -182,7 +195,13 @@ public class BankingInterfaceImpl implements BankingInterface {
 
     @Override
     public String searchCustomer(Integer customerNr) throws BankingInterfaceException {
-     return bankService.customerDAO.findById(customerNr).toString();
+        Customer customer = bankService.customerDAO.findById(customerNr);
+
+        if (customer != null) {
+            return customer.toString();
+        }
+
+     return null;
     }
 
     @Override
@@ -199,6 +218,11 @@ public class BankingInterfaceImpl implements BankingInterface {
     private void buyNewShare(Depot depot, TradeDTO tradeDTO) {
         Shares share = new Shares(depot, tradeDTO.getStockName(), tradeDTO.getAmount());
         bankService.stockDAO.persist(share);
+
+        if (depot.getShares() == null) {
+            depot.setShares(new ArrayList<>());
+        }
+
         depot.getShares().add(share);
     }
 
@@ -215,5 +239,15 @@ public class BankingInterfaceImpl implements BankingInterface {
                 .findFirst()
                 .orElse(null);
         return existingSharesEntry;
+    }
+
+    private void removeFromInvestableVolume(Bank bank, TradeDTO tradeDTO) {
+        bank.setInvestableVolume(bank.getInvestableVolume() - tradeDTO.getAmount());
+        bankService.bankDAO.persist(bank);
+    }
+
+    private void addToInvestableVolume(Bank bank, TradeDTO tradeDTO) {
+        bank.setInvestableVolume(bank.getInvestableVolume() + tradeDTO.getAmount());
+        bankService.bankDAO.persist(bank);
     }
 }

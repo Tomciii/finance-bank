@@ -1,7 +1,6 @@
 package net.froihofer.util.jboss.persistance.dao;
 
 import net.froihofer.util.jboss.persistance.entity.Bank;
-import net.froihofer.util.jboss.persistance.entity.Customer;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
