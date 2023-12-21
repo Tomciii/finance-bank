@@ -2,9 +2,7 @@ package net.froihofer.util.jboss;
 
 import common.bankingInterface.BankingInterface;
 import common.bankingInterface.BankingInterfaceException;
-import common.dto.DepotDTO;
-import common.dto.ListStockDTO;
-import common.dto.TradeDTO;
+import common.dto.*;
 import jakarta.xml.bind.JAXBException;
 import net.froihofer.util.jboss.persistance.entity.Bank;
 import net.froihofer.util.jboss.persistance.entity.Customer;
@@ -91,9 +89,12 @@ public class BankingInterfaceImpl implements BankingInterface {
     }
 
     @Override
-    public String searchStockByISIN(String isin) throws BankingInterfaceException {
-      //  return bankService.getPerson(1102562345).toString();
-        return null;
+    public ListStockDTO searchStockByISIN(String isin) throws BankingInterfaceException {
+        try {
+            return stockMapper.toStockDTOList(bankService.getFindStockQuotesByIsinResponse(isin));
+        } catch (JAXBException | IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     // TODO - Return something like a StockDTO which is in the commons so that client can also access the dto (Like The "PersonTranslator" class)
@@ -103,7 +104,7 @@ public class BankingInterfaceImpl implements BankingInterface {
 
         try {
             return stockMapper.toStockDTOList(bankService.getFindStockQuotesByCompanyNameResponse(name));
-        } catch (JAXBException |IOException e) {
+        } catch (JAXBException | IOException e) {
             throw new RuntimeException(e);
         }
     }
@@ -179,7 +180,6 @@ public class BankingInterfaceImpl implements BankingInterface {
       //  bankService.createPerson(name, givenname, address, svnr, username, password);
     }
 
-
     @Override
     public String createCustomer(String name, String givenname, String address, int customerNumber, String username, String password) {
         Depot depot = new Depot(customerNumber, customerNumber, new ArrayList<>());
@@ -201,21 +201,15 @@ public class BankingInterfaceImpl implements BankingInterface {
 
 
     @Override
-    public String searchCustomer(Integer customerNr) throws BankingInterfaceException {
-        Customer customer = bankService.customerDAO.findById(customerNr);
-
-        if (customer != null) {
-            return customer.toString();
-        }
-
-     return null;
+    public PersonDTO searchCustomer(Integer customerNr) throws BankingInterfaceException {
+        var customer = bankService.customerDAO.findById(customerNr);
+        return new CustomerDTO(customer.getCustomerNr(), customer.getName(), customer.getGivenname(), customer.getAddresse(), customer.getBankDepotID());
     }
 
     @Override
     public String getInvestableVolume() throws BankingInterfaceException {
         return bankService.bankDAO.findById(1).getInvestableVolume().toString();
     }
-
 
     @Override
     public long getVariable(String name) throws BankingInterfaceException {

@@ -9,29 +9,29 @@ public class PersonDTO implements Serializable {
     protected String name;
     protected String givenname;
     protected String username;
-    protected String addresse;
+    protected String address;
 
     public PersonDTO() {
     }
 
-    public PersonDTO(int svnr, String name, String givenname, String username, String addresse) {
+    public PersonDTO(int svnr, String name, String givenname, String username, String address) {
         this.svnr = svnr;
         this.name = name;
         this.givenname = givenname;
         this.username = username;
-        this.addresse = addresse;
+        this.address = address;
     }
 
     public PersonDTO(int svnr) {
         this.svnr = svnr;
     }
 
-    public String getAddresse() {
-        return addresse;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAddresse(String addresse) {
-        this.addresse = addresse;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public int getSvnr() {
@@ -73,7 +73,7 @@ public class PersonDTO implements Serializable {
                 ", name='" + name + '\'' +
                 ", givenname='" + givenname + '\'' +
                 ", username='" + username + '\'' +
-                ", addresse='" + addresse + '\'' +
+                ", addresse='" + address + '\'' +
                 '}';
     }
 }
